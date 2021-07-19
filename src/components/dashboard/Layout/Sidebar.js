@@ -1,5 +1,5 @@
-import { Drawer, makeStyles, List, Divider } from '@material-ui/core';
-import { HomeRounded, MessageRounded, PagesRounded, VerifiedUserRounded, AccountBalanceTwoTone } from '@material-ui/icons';
+import { Drawer, makeStyles, List } from '@material-ui/core';
+import { HomeRounded, MessageRounded, PagesRounded } from '@material-ui/icons';
 import { NavLink } from "react-router-dom"
 
 const drawerWidth = 100;

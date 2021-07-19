@@ -1,94 +1,94 @@
-import { Drawer, makeStyles, List, Divider } from '@material-ui/core';
-import { HomeRounded, MessageRounded, PagesRounded, VerifiedUserRounded, AccountBalanceTwoTone } from '@material-ui/icons';
-import { NavLink } from "react-router-dom"
+import { Drawer, List, makeStyles } from "@material-ui/core";
+import {
+  HomeRounded,
+  PagesRounded,
+} from "@material-ui/icons";
+import { NavLink } from "react-router-dom";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
-  // toolbar: theme.mixins.toolbar,
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#f4f6f9",
+    backgroundColor: "#1F236F",
     borderRight: "1px solid rgba(0, 0, 0, 0.07)",
   },
   IconWrapper: {
-    height: 64,
-    width: 64,
-    backgroundColor: '#555892',
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: '0 auto 5px',
-    '& svg': {
+    height: 22,
+    width: 22,
+    // backgroundColor: "#555892",
+    borderRadius: "50%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    alignContent: "center",
+    margin: "0 25px 0 5px",
+    "& svg": {
       fontSize: 28,
-      fill: "#fff"
+      fill: "#fff",
     },
   },
   sideBarListItem: {
-    display: 'block',
-    textAlign: 'center',
+    display: "flex",
+    flexWrap: "wrap",
+    alignContent: "center",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    padding: "16px",
+    marginRight: "24px",
+    marginLeft: "24px",
     fontWeight: 500,
-    marginBottom: 28,
     opacity: 0.65,
     border: 0,
-    background: 'transparent',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    cursor: 'pointer',
-    transition: 'opacity 0.3s ease',
-    '&[disabled]': {
-      pointerEvents: 'none',
+    background: "transparent",
+    cursor: "pointer",
+    transition: "opacity 0.3s ease",
+    "&[disabled]": {
+      pointerEvents: "none",
     },
-    '&.active, &:hover': {
+    "&.active, &:hover": {
       opacity: 1,
     },
-    '&.active, &:focus': {
+    "&.active, &:focus": {
       outline: 1,
     },
-    '& span': {
-      fontSize: 12,
+    "& span": {
+      fontSize: 14,
       lineHeight: 1,
-      color: '#fff',
+      color: "#fff",
     },
   },
-}))
+}));
 
 const navMenu = [
   {
     label: "Dashboard",
-    link: "dashboard",
+    link: "dashboard-2",
     icon: <HomeRounded />,
   },
   {
-    label: "Pages",
-    link: "dashboard/pages",
-    icon: <PagesRounded />
+    label: "User",
+    link: "dashboard-2/user",
+    icon: <PagesRounded />,
   },
-  {
-    label: "Comments",
-    link: "dashboard/comment",
-    icon: <MessageRounded />
-  },
-  {
-    label: "Projects",
-    link: "dashboard/projects",
-    icon: <AccountBalanceTwoTone />
-  }
-]
+];
 
 const SidebarMenuItem = (props) => {
-  const classes = useStyles()
-  const { to, activePath, label, icon } = props
+  const classes = useStyles();
+  const { to, activePath, label, icon } = props;
 
   return (
     <li>
       <NavLink
         exact
-        isActive={activePath && ((_, { pathname }) => activePath.some((path) => path === pathname.split('/')[1]))}
+        isActive={
+          activePath &&
+          ((_, { pathname }) =>
+            activePath.some((path) => path === pathname.split("/")[1]))
+        }
         to={`/${to}`}
         className={classes.sideBarListItem}
       >
@@ -96,8 +96,8 @@ const SidebarMenuItem = (props) => {
         <span>{label}</span>
       </NavLink>
     </li>
-  )
-}
+  );
+};
 
 const SidebarTwo = () => {
   const classes = useStyles();
@@ -111,7 +111,7 @@ const SidebarTwo = () => {
       }}
     >
       <div className={classes.toolbar} />
-      {/* <List>
+      <List>
         {navMenu.map((navItem) => (
           <SidebarMenuItem
             to={navItem.link}
@@ -121,9 +121,9 @@ const SidebarTwo = () => {
             icon={navItem.icon}
           />
         ))}
-      </List> */}
+      </List>
     </Drawer>
   );
-}
+};
 
 export default SidebarTwo;

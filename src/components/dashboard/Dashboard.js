@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core'
-import { Switch, Route, Redirect } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 
 import Navbar from "./Layout/Navbar"
 import Sidebar from "./Layout/Sidebar"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 
@@ -6,11 +6,10 @@ import Dashboard from '../components/dashboard/Dashboard';
 import Home from '../components/home/Home';
 import CommonRoute from './CommonRoute';
 import ProtectedRoute from './ProtectedRoute';
-import Post from '../components/dashboard/Posts/Post'
 import DashboardTwo from '../components/dashboard/DashboardTwo';
 
 const MainRoute = () => {
-  const [isVerified, setIsVerified] = useState(false);
+  const isVerified = useState(false);
 
   // useEffect(() => {
   //   setIsVerified(true)

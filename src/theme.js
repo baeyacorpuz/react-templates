@@ -1,6 +1,6 @@
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
+import { createTheme, responsiveFontSizes } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     htmlFontSize: 16,
     fontSize: 16,
@@ -33,6 +33,9 @@ const theme = createMuiTheme({
     h6: {
       fontSize: '1rem',
     },
+    caption: {
+      fontSize: 12
+    }
   },
   palette: {
     common: {
@@ -68,6 +71,11 @@ const theme = createMuiTheme({
     MuiIconButton: {
       root: {
         borderRadius: "0%"
+      }
+    },
+    MuiTab: {
+      root: {
+        fontSize: 14
       }
     }
   }
