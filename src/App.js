@@ -1,5 +1,7 @@
 import { BrowserRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+
+
 import './App.css';
 import MainRoute from './routes/MainRoute';
 
@@ -8,7 +10,7 @@ const App = () => {
     <>
       <Helmet defaultTitle="Baeintech" titleTemplate="%s - Design & Development"></Helmet>
 
-      <div className="App">
+      <div className="">
         <header className="App-header">
           <BrowserRouter>
             <MainRoute />
