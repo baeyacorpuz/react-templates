@@ -1,25 +1,21 @@
-import { Drawer, List, makeStyles } from "@material-ui/core";
-import {
-  HomeRounded,
-  PagesRounded,
-} from "@material-ui/icons";
+import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
+import { HomeRounded, PagesRounded } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+    },
   },
   drawerPaper: {
     width: drawerWidth,
-    backgroundColor: "#1F236F",
-    borderRight: "1px solid rgba(0, 0, 0, 0.07)",
   },
   IconWrapper: {
     height: 22,
     width: 22,
-    // backgroundColor: "#555892",
     borderRadius: "50%",
     display: "flex",
     alignItems: "center",
@@ -28,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 25px 0 5px",
     "& svg": {
       fontSize: 28,
-      fill: "#fff",
+      fill: "#41B67F",
     },
   },
   sideBarListItem: {
@@ -38,8 +34,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "flex-start",
     padding: "16px",
-    marginRight: "24px",
-    marginLeft: "24px",
+    marginRight: 32,
+    marginLeft: 32,
     fontWeight: 500,
     opacity: 0.65,
     border: 0,
@@ -58,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
     "& span": {
       fontSize: 14,
       lineHeight: 1,
-      color: "#fff",
+      color: "#41B67F",
     },
   },
 }));
@@ -99,30 +95,50 @@ const SidebarMenuItem = (props) => {
   );
 };
 
-const SidebarTwo = () => {
+const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
+
+  const drawer = (
+    <List>
+      {navMenu.map((navItem) => (
+        <SidebarMenuItem
+          to={navItem.link}
+          key={navItem.link}
+          activePath={navItem.activePath}
+          label={navItem.label}
+          icon={navItem.icon}
+        />
+      ))}
+    </List>
+  );
+
   return (
-    <Drawer
-      className={classes.drawer}
-      variant="permanent"
-      anchor="left"
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-    >
-      <div className={classes.toolbar} />
-      <List>
-        {navMenu.map((navItem) => (
-          <SidebarMenuItem
-            to={navItem.link}
-            key={navItem.link}
-            activePath={navItem.activePath}
-            label={navItem.label}
-            icon={navItem.icon}
-          />
-        ))}
-      </List>
-    </Drawer>
+    <nav className={classes.drawer}>
+      <Hidden smUp implementation="css">
+        <Drawer
+          variant="temporary"
+          anchor="left"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+      <Hidden xsDown implementation="css">
+        <Drawer
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+          variant="permanent"
+          open
+        >
+          {drawer}
+        </Drawer>
+      </Hidden>
+    </nav>
   );
 };
 

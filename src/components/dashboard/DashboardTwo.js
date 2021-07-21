@@ -1,31 +1,47 @@
-import { makeStyles } from "@material-ui/core";
+import { useState } from "react";
+import { CssBaseline, makeStyles } from "@material-ui/core";
 import { Route, Switch } from "react-router-dom";
 
-import Navbar from "./Layout/Navbar";
+import NavbarTwo from "./Layout/NavbarTwo";
 import SidebarTwo from "./Layout/SidebarTwo";
 import User from "./User/User";
 
-const useStyles = makeStyles({
-  appBarWrapper: {
-    marginLeft: 280,
+const drawerWidth = 280;
+
+const useStyles = makeStyles((theme) => ({
+  toolbar: theme.mixins.toolbar,
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    [theme.breakpoints.up("sm")]: {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: drawerWidth,
+    },
   },
-  contentWrapper: {
-    marginTop: 75,
-    marginLeft: 280,
-  },
-});
+}));
 
 const DashboardTwo = () => {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   const classes = useStyles();
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
   return (
     <>
-      <SidebarTwo />
-
-      <div className={classes.appBarWrapper}>
-        <Navbar />
+      <div>
+        <CssBaseline />
+        <NavbarTwo handleDrawerToggle={handleDrawerToggle} />
+        <SidebarTwo
+          handleDrawerToggle={handleDrawerToggle}
+          mobileOpen={mobileOpen}
+        />
       </div>
 
-      <div className={classes.contentWrapper}>
+      <div className={classes.content}>
+        <div className={classes.toolbar} />
         <Switch>
           <Route path="/dashboard-2/user" component={User} />
         </Switch>
