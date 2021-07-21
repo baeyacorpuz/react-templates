@@ -44,7 +44,7 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
           <IconButton
             color="inherit"
             edge="start"
-            onClick={handleNotifications}
+            onClick={handleDrawerToggle}
             className={classes.menuButton}
           >
             <Menu />
