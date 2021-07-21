@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
   drawer: {
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.up("md")]: {
       width: drawerWidth,
       flexShrink: 0,
     },
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
+  toolbar: theme.mixins.toolbar,
   IconWrapper: {
     height: 22,
     width: 22,
@@ -99,17 +100,20 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
 
   const drawer = (
-    <List>
-      {navMenu.map((navItem) => (
-        <SidebarMenuItem
-          to={navItem.link}
-          key={navItem.link}
-          activePath={navItem.activePath}
-          label={navItem.label}
-          icon={navItem.icon}
-        />
-      ))}
-    </List>
+    <>
+      <div className={classes.toolbar} />
+      <List>
+        {navMenu.map((navItem) => (
+          <SidebarMenuItem
+            to={navItem.link}
+            key={navItem.link}
+            activePath={navItem.activePath}
+            label={navItem.label}
+            icon={navItem.icon}
+          />
+        ))}
+      </List>
+    </>
   );
 
   return (
@@ -127,7 +131,7 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
           {drawer}
         </Drawer>
       </Hidden>
-      <Hidden xsDown implementation="css">
+      <Hidden smDown implementation="css">
         <Drawer
           classes={{
             paper: classes.drawerPaper,

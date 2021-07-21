@@ -33,7 +33,7 @@ const User = () => {
       <Helmet title="User: Account"></Helmet>
       <Container maxWidth="lg">
         <Grid container spacing={2} className={classes.headerTitle}>
-          <Grid item sm={6} xs={12}>
+          <Grid item md={6} sm={12} xs={12}>
             <Typography variant="h2">User</Typography>
 
             <Breadcrumbs className={classes.breadcrumbs}>
