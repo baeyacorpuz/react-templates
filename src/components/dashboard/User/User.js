@@ -1,15 +1,10 @@
 import { Helmet } from "react-helmet";
-import {
-  Container,
-  Grid,
-  makeStyles,
-  Tab,
-  Tabs,
-} from "@material-ui/core";
+import { Container, Grid, makeStyles, Tab, Tabs } from "@material-ui/core";
 import { useState } from "react";
 import PageTitle from "../../common/PageTitle";
 import ChangePassword from "./ChangePassword";
 import General from "./General";
+import SocialLinks from "./SocialLinks";
 
 const useStyles = makeStyles({
   breadcrumbs: {
@@ -19,7 +14,7 @@ const useStyles = makeStyles({
     marginBottom: 40,
   },
   contentWrapper: {
-    marginBottom: 40
+    marginBottom: 40,
   },
 });
 
@@ -34,12 +29,10 @@ const TabPanel = (props) => {
       aria-labelledby={`scrollable-force-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        children
-      )}
+      {value === index && children}
     </div>
   );
-}
+};
 
 function a11yProps(index) {
   return {
@@ -81,7 +74,7 @@ const User = () => {
           <General />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          2
+          <SocialLinks />
         </TabPanel>
         <TabPanel value={value} index={2}>
           <ChangePassword />

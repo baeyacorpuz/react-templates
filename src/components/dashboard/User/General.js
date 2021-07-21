@@ -1,6 +1,6 @@
 import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField2 from "@material-ui/core/TextField"
+import TextField2 from "@material-ui/core/TextField";
 import { TextField } from "mui-rff";
 import { Form } from "react-final-form";
 import { countries } from "../../../utils/countries";
@@ -15,6 +15,7 @@ const useStyles = makeStyles({
 const initialValues = {
   name: "Templated UI",
   emailAddress: "demo@templated.com",
+  country: "Philippines",
 };
 
 const General = () => {
@@ -61,17 +62,22 @@ const General = () => {
                     <Grid item xs={12} md={6}>
                       <Autocomplete
                         name="country"
+                        value={initialValues.country}
+                        placeholder={initialValues.country}
                         style={{ width: "100%" }}
                         options={countries}
                         autoHighlight
-                        getOptionLabel={(option) => option.label} renderInput={(params) => (
+                        getOptionLabel={(option) => option.label}
+                        renderInput={(params) => (
                           <TextField2
                             {...params}
                             label="Country"
+                            value={initialValues.country}
+                            placeholder={initialValues.country}
                             variant="outlined"
                             inputProps={{
                               ...params.inputProps,
-                              autoComplete: 'new-password', // disable autocomplete and autofill
+                              autoComplete: "new-password", // disable autocomplete and autofill
                             }}
                           />
                         )}
@@ -97,6 +103,16 @@ const General = () => {
                       <TextField
                         name="zipCode"
                         label="Zip Code"
+                        variant="outlined"
+                        color="primary"
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                      <TextField
+                        name="about"
+                        label="About"
+                        multiline
+                        rows={4}
                         variant="outlined"
                         color="primary"
                       />

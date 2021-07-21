@@ -87,6 +87,11 @@ const theme = createTheme({
       colorPrimary: {
         backgroundColor: "#fff"
       }
+    },
+    MuiCard: {
+      root: {
+        marginBottom: 25
+      }
     }
   }
 })
