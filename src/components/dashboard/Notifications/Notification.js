@@ -2,7 +2,6 @@ import {
   Card,
   CardContent,
   Container,
-  Paper,
   Typography,
 } from "@material-ui/core";
 import { useEffect, useState } from "react";

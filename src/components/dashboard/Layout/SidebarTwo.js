@@ -1,5 +1,5 @@
 import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
-import { HomeRounded, PagesRounded } from "@material-ui/icons";
+import { HomeRounded, PermIdentity } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 const drawerWidth = 280;
@@ -69,7 +69,7 @@ const navMenu = [
   {
     label: "User",
     link: "dashboard/user",
-    icon: <PagesRounded />,
+    icon: <PermIdentity />,
   },
 ];
 
