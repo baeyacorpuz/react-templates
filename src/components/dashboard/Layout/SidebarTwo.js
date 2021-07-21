@@ -63,12 +63,12 @@ const useStyles = makeStyles((theme) => ({
 const navMenu = [
   {
     label: "Dashboard",
-    link: "dashboard-2",
+    link: "dashboard",
     icon: <HomeRounded />,
   },
   {
     label: "User",
-    link: "dashboard-2/user",
+    link: "dashboard/user",
     icon: <PagesRounded />,
   },
 ];

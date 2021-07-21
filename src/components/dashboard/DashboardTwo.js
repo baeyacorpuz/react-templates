@@ -5,6 +5,7 @@ import { Route, Switch } from "react-router-dom";
 import NavbarTwo from "./Layout/NavbarTwo";
 import SidebarTwo from "./Layout/SidebarTwo";
 import User from "./User/User";
+import Notification from "./Notifications/Notification";
 
 const drawerWidth = 280;
 
@@ -43,7 +44,8 @@ const DashboardTwo = () => {
       <div className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route path="/dashboard-2/user" component={User} />
+          <Route path="/dashboard/user" component={User} />
+          <Route path="/dashboard/notifications" component={Notification} />
         </Switch>
       </div>
     </>

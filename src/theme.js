@@ -77,6 +77,16 @@ const theme = createTheme({
       root: {
         fontSize: 14
       }
+    },
+    MuiButton: {
+      root: {
+        minWidth: 150
+      }
+    },
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: "#fff"
+      }
     }
   }
 })

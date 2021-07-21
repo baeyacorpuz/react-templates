@@ -25,8 +25,8 @@ const MainRoute = () => {
       <CommonRoute path="/login" component={Home} />
       <CommonRoute path="/sign-up" component={Home} />
 
-      <ProtectedRoute path="/dashboard" component={Dashboard} />
-      <ProtectedRoute path="/dashboard-2" component={DashboardTwo} />
+      <ProtectedRoute path="/dashboard-2" component={Dashboard} />
+      <ProtectedRoute path="/dashboard" component={DashboardTwo} />
 
       {isVerified && (
         <>

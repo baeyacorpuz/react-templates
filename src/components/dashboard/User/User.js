@@ -1,24 +1,52 @@
 import { Helmet } from "react-helmet";
 import {
-  Breadcrumbs,
   Container,
   Grid,
-  Link,
   makeStyles,
   Tab,
   Tabs,
-  Typography,
 } from "@material-ui/core";
 import { useState } from "react";
+import PageTitle from "../../common/PageTitle";
+import ChangePassword from "./ChangePassword";
+import General from "./General";
 
 const useStyles = makeStyles({
   breadcrumbs: {
     fontSize: 12,
   },
   headerTitle: {
+    marginBottom: 40,
+  },
+  contentWrapper: {
     marginBottom: 40
-  }
+  },
 });
+
+const TabPanel = (props) => {
+  const { children, value, index, ...other } = props;
+
+  return (
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`scrollable-force-tabpanel-${index}`}
+      aria-labelledby={`scrollable-force-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        children
+      )}
+    </div>
+  );
+}
+
+function a11yProps(index) {
+  return {
+    id: `scrollable-auto-tab-${index}`,
+    "aria-controls": `scrollable-auto-tabpanel-${index}`,
+  };
+}
 
 const User = () => {
   const [value, setValue] = useState(0);
@@ -31,23 +59,9 @@ const User = () => {
   return (
     <>
       <Helmet title="User: Account"></Helmet>
+      <PageTitle title="User" link={"/dashboard-2/user"} />
       <Container maxWidth="lg">
-        <Grid container spacing={2} className={classes.headerTitle}>
-          <Grid item md={6} sm={12} xs={12}>
-            <Typography variant="h2">User</Typography>
-
-            <Breadcrumbs className={classes.breadcrumbs}>
-              <Link color="inherit" href="/">
-                Dashboard
-              </Link>
-              <Link color="inherit" href="/dashboard-2/user/">
-                User
-              </Link>
-              <Typography variantMapping="p" variant="caption" color="textPrimary">Account Settings</Typography>
-            </Breadcrumbs>
-          </Grid>
-        </Grid>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} className={classes.contentWrapper}>
           <Grid item xs={12}>
             <Tabs
               value={value}
@@ -57,13 +71,21 @@ const User = () => {
               variant="scrollable"
               scrollButtons="auto"
             >
-              <Tab label="General" />
-              <Tab label="Notifications" />
-              <Tab label="Social Links" />
-              <Tab label="Change Password" />
+              <Tab label="General" {...a11yProps(0)} />
+              <Tab label="Social Links" {...a11yProps(1)} />
+              <Tab label="Change Password" {...a11yProps(2)} />
             </Tabs>
           </Grid>
         </Grid>
+        <TabPanel value={value} index={0}>
+          <General />
+        </TabPanel>
+        <TabPanel value={value} index={1}>
+          2
+        </TabPanel>
+        <TabPanel value={value} index={2}>
+          <ChangePassword />
+        </TabPanel>
       </Container>
     </>
   );

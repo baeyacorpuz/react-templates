@@ -8,7 +8,7 @@ import MainRoute from './routes/MainRoute';
 const App = () => {
   return (
     <>
-      <Helmet defaultTitle="Baeintech" titleTemplate="%s - Design & Development"></Helmet>
+      <Helmet defaultTitle="Templated" titleTemplate="%s - Design & Development"></Helmet>
 
       <div className="">
         <header className="App-header">
