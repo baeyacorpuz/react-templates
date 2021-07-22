@@ -6,6 +6,9 @@ import NavbarTwo from "./Layout/NavbarTwo";
 import SidebarTwo from "./Layout/SidebarTwo";
 import User from "./User/User";
 import Notification from "./Notifications/Notification";
+import Home from "./Layout/Home";
+import Products from "./Ecommerce/Products";
+import Create from "./Ecommerce/Create";
 
 const drawerWidth = 280;
 
@@ -44,8 +47,11 @@ const DashboardTwo = () => {
       <div className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
+          <Route path="/dashboard/home" component={Home} />
           <Route path="/dashboard/user" component={User} />
           <Route path="/dashboard/notifications" component={Notification} />
+          <Route path="/dashboard/ecommerce/products" component={Products} />
+          <Route path="/dashboard/ecommerce/create" component={Create} />
         </Switch>
       </div>
     </>

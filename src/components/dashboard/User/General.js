@@ -16,6 +16,11 @@ const initialValues = {
   name: "Templated UI",
   emailAddress: "demo@templated.com",
   country: "Philippines",
+  state: "Metro Manila",
+  city: "Quezon City",
+  zipCode: "1105",
+  about:
+    "Nullam cursus lacinia erat. Vestibulum suscipit nulla quis orci. Fusce a quam. Morbi mollis tellus ac sapien. Praesent nonummy mi in odio.",
 };
 
 const General = () => {
@@ -27,12 +32,10 @@ const General = () => {
   return (
     <>
       <Grid container spacing={2}>
-        <Grid item xs={12} md={5}>
-          <Paper variant="outlined" className={classes.paperWrapper}>
-            
-          </Paper>
+        <Grid item xs={12} md={4} sm={12}>
+          <Paper variant="outlined" className={classes.paperWrapper}></Paper>
         </Grid>
-        <Grid item xs={12} md={7}>
+        <Grid item xs={12} md={8} sm={12}>
           <Paper variant="outlined" className={classes.paperWrapper}>
             <Form
               onSubmit={onSubmit}
@@ -40,7 +43,7 @@ const General = () => {
               render={({ handleSubmit }) => (
                 <form>
                   <Grid container spacing={2}>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <TextField
                         name="name"
                         label="Name"
@@ -49,7 +52,7 @@ const General = () => {
                         color="primary"
                       />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <TextField
                         name="emailAddress"
                         label="Email Address"
@@ -59,7 +62,7 @@ const General = () => {
                         disabled
                       />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <Autocomplete
                         name="country"
                         value={initialValues.country}
@@ -83,7 +86,7 @@ const General = () => {
                         )}
                       />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <TextField
                         name="state"
                         label="State/Region"
@@ -99,7 +102,7 @@ const General = () => {
                         color="primary"
                       />
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={12} md={6}>
                       <TextField
                         name="zipCode"
                         label="Zip Code"

@@ -17,10 +17,10 @@ const useStyles = makeStyles({
 });
 
 const initialValues = {
-  facebook: "",
-  twitter: "",
-  linkedIn: "",
-  instagram: "",
+  facebook: "https://www.facebook.com/material-ui",
+  twitter: "https://twitter.com/material-ui",
+  linkedIn: "https://www.linkedin.com/material-ui",
+  instagram: "https://www.instagram.com/material-ui",
 };
 
 const SocialLinks = () => {
@@ -88,8 +88,8 @@ const SocialLinks = () => {
 
                 <Grid item xs={12}>
                   <TextField
-                    name="instragram"
-                    label="Instagra,"
+                    name="instagram"
+                    label="Instagram"
                     variant="outlined"
                     fullWidth
                     InputProps={{

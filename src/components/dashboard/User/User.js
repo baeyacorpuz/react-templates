@@ -52,8 +52,8 @@ const User = () => {
   return (
     <>
       <Helmet title="User: Account"></Helmet>
-      <PageTitle title="User" link={"/dashboard-2/user"} />
       <Container maxWidth="lg">
+        <PageTitle title="User" link={"/dashboard-2/user"} page="User" />
         <Grid container spacing={2} className={classes.contentWrapper}>
           <Grid item xs={12}>
             <Tabs

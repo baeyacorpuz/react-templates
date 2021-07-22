@@ -23,6 +23,7 @@ const theme = createTheme({
     },
     h3: {
       fontSize: '1.75rem',
+      fontWeight: 600
     },
     h4: {
       fontSize: '1.125rem',
@@ -75,12 +76,28 @@ const theme = createTheme({
     },
     MuiTab: {
       root: {
-        fontSize: 14
-      }
+        fontSize: 14,
+        // '@media (min-width: 600px)': {
+        //   minWidth: "auto"
+        // }
+      },
+      // wrapper: {
+      //   display: 'flex',
+      //   alignItems: 'flex-start',
+      //   flexDirection: "column",
+      //   justifyContent: "center",
+      //   alignContent: "flex-start"
+      // }
     },
     MuiButton: {
       root: {
         minWidth: 150
+      },
+      contained: {
+        boxShadow: "none"
+      },
+      containedPrimary: {
+        color: "#fff"
       }
     },
     MuiAppBar: {

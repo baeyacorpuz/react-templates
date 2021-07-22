@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardContent,
-  Container,
-  Typography,
-} from "@material-ui/core";
+import { Card, CardContent, Container, Typography } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import Helmet from "react-helmet";
 import PageTitle from "../../common/PageTitle";
@@ -18,8 +13,8 @@ const Notification = () => {
   return (
     <>
       <Helmet title="Notifications"></Helmet>
-      <PageTitle title="Notifications" link={"/dashboard/notifications"} />
       <Container maxWidth="lg">
+        <PageTitle title="Notifications" page="Notifications" link={"/dashboard/notifications"} />
         {notifications &&
           notifications.map((notif, index) => (
             <Card variant="outlined" key={index}>

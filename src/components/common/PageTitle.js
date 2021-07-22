@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-const PageTitle = ({ title, link }) => {
+const PageTitle = ({ title, link, page }) => {
   const classes = useStyles();
 
   return (
@@ -24,7 +24,7 @@ const PageTitle = ({ title, link }) => {
               Dashboard
             </Link>
             <Link color="inherit" to={link}>
-              {title}
+              {page}
             </Link>
           </Breadcrumbs>
         </Grid>

@@ -1,5 +1,9 @@
 import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
-import { HomeRounded, PermIdentity } from "@material-ui/icons";
+import {
+  HomeRounded,
+  PermIdentity,
+  ShoppingCartOutlined,
+} from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
 const drawerWidth = 280;
@@ -35,8 +39,8 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "flex-start",
     padding: "16px",
-    marginRight: 32,
-    marginLeft: 32,
+    marginRight: 24,
+    marginLeft: 24,
     fontWeight: 500,
     opacity: 0.65,
     border: 0,
@@ -63,13 +67,23 @@ const useStyles = makeStyles((theme) => ({
 const navMenu = [
   {
     label: "Dashboard",
-    link: "dashboard",
+    link: "dashboard/home",
     icon: <HomeRounded />,
   },
   {
     label: "User",
     link: "dashboard/user",
     icon: <PermIdentity />,
+  },
+  {
+    label: "Ecommerce",
+    link: "dashboard/ecommerce/products",
+    icon: <ShoppingCartOutlined />,
+    activePath: [
+      "dashboard/ecommerce/products",
+      "dashboard/ecommerce/create",
+      "dashboard/ecommerce/product",
+    ],
   },
 ];
 
@@ -81,10 +95,13 @@ const SidebarMenuItem = (props) => {
     <li>
       <NavLink
         exact
+        // isActive={
+        //   activePath &&
+        //   ((_, { pathname }) =>
+        //     activePath.some((path) => path === pathname.split("/")[1]))
+        // }
         isActive={
-          activePath &&
-          ((_, { pathname }) =>
-            activePath.some((path) => path === pathname.split("/")[1]))
+          activePath && ((_, { pathname }) => activePath.some((path) => pathname.includes(path)))
         }
         to={`/${to}`}
         className={classes.sideBarListItem}
