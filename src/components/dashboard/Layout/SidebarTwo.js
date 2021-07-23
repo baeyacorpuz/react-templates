@@ -4,7 +4,7 @@ import {
   PermIdentity,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 import Templated from "../../../assets/images/template.png";
 
@@ -133,7 +133,9 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
       {/* <div className={classes.toolbar} /> */}
       <div className={classes.logoWrapper}>
         {/* <Typography variant="h2">Templated</Typography> */}
-        <img className={classes.logo} src={Templated} alt="template logo" />
+        <Link to={"/dashboard/home"}>
+          <img className={classes.logo} src={Templated} alt="template logo" />
+        </Link>
       </div>
       <List>
         {navMenu.map((navItem) => (
