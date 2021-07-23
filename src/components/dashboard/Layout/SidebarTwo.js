@@ -83,6 +83,8 @@ const navMenu = [
       "dashboard/ecommerce/products",
       "dashboard/ecommerce/create",
       "dashboard/ecommerce/product",
+      "dashboard/ecommerce/category",
+      "dashboard/ecommerce/tag",
     ],
   },
 ];

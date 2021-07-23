@@ -4,8 +4,7 @@ import { TextField } from "mui-rff";
 
 const useStyles = makeStyles({
   paperWrapper: {
-    padding: 32,
-    borderRadius: 8,
+    padding: 24,
   },
 });
 

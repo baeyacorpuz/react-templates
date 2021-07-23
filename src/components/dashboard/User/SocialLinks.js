@@ -11,8 +11,7 @@ import { Form } from "react-final-form";
 
 const useStyles = makeStyles({
   paperWrapper: {
-    padding: 32,
-    borderRadius: 8,
+    padding: 24,
   },
 });
 

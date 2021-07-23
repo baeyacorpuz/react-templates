@@ -16,7 +16,6 @@ import Reminder from "../../../assets/images/svg/reminder.svg"
 const useStyles = makeStyles((theme) => ({
   paperWrapper: {
     padding: 32,
-    borderRadius: 8,
     minHeight: 250,
   },
   boxShadow: {

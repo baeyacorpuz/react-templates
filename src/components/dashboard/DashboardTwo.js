@@ -9,6 +9,8 @@ import Notification from "./Notifications/Notification";
 import Home from "./Layout/Home";
 import Products from "./Ecommerce/Products";
 import Create from "./Ecommerce/Create";
+import Category from "./Ecommerce/Grouping/Category";
+import Tag from "./Ecommerce/Grouping/Tag";
 
 const drawerWidth = 280;
 
@@ -52,6 +54,8 @@ const DashboardTwo = () => {
           <Route path="/dashboard/notifications" component={Notification} />
           <Route path="/dashboard/ecommerce/products" component={Products} />
           <Route path="/dashboard/ecommerce/create" component={Create} />
+          <Route path="/dashboard/ecommerce/category" component={Category} />
+          <Route path="/dashboard/ecommerce/tag" component={Tag} />
         </Switch>
       </div>
     </>

@@ -109,6 +109,11 @@ const theme = createTheme({
       root: {
         marginBottom: 25
       }
+    },
+    MuiPaper: {
+      rounded: {
+        borderRadius: 12
+      }
     }
   }
 })
