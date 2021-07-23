@@ -6,6 +6,8 @@ import {
 } from "@material-ui/icons";
 import { NavLink } from "react-router-dom";
 
+import Templated from "../../../assets/images/template.png";
+
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
   drawer: {
@@ -62,6 +64,12 @@ const useStyles = makeStyles((theme) => ({
       color: "#41B67F",
     },
   },
+  logoWrapper: {
+    padding: 16,
+  },
+  logo: {
+    width: 90,
+  },
 }));
 
 const navMenu = [
@@ -103,7 +111,9 @@ const SidebarMenuItem = (props) => {
         //     activePath.some((path) => path === pathname.split("/")[1]))
         // }
         isActive={
-          activePath && ((_, { pathname }) => activePath.some((path) => pathname.includes(path)))
+          activePath &&
+          ((_, { pathname }) =>
+            activePath.some((path) => pathname.includes(path)))
         }
         to={`/${to}`}
         className={classes.sideBarListItem}
@@ -120,7 +130,11 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
 
   const drawer = (
     <>
-      <div className={classes.toolbar} />
+      {/* <div className={classes.toolbar} /> */}
+      <div className={classes.logoWrapper}>
+        {/* <Typography variant="h2">Templated</Typography> */}
+        <img className={classes.logo} src={Templated} alt="template logo" />
+      </div>
       <List>
         {navMenu.map((navItem) => (
           <SidebarMenuItem

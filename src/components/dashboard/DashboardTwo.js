@@ -57,6 +57,7 @@ const DashboardTwo = () => {
           <Route path="/dashboard/ecommerce/category" component={Category} />
           <Route path="/dashboard/ecommerce/tag" component={Tag} />
         </Switch>
+        <div className={classes.toolbar} />
       </div>
     </>
   );

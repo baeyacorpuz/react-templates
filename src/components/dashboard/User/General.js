@@ -4,6 +4,7 @@ import TextField2 from "@material-ui/core/TextField";
 import { TextField } from "mui-rff";
 import { Form } from "react-final-form";
 import { countries } from "../../../utils/countries";
+import ProfileDropzone from "../../common/ProfileDropzone";
 
 const useStyles = makeStyles({
   paperWrapper: {
@@ -32,7 +33,9 @@ const General = () => {
     <>
       <Grid container spacing={2}>
         <Grid item xs={12} md={4} sm={12}>
-          <Paper variant="outlined" className={classes.paperWrapper}></Paper>
+          <Paper variant="outlined" className={classes.paperWrapper}>
+            <ProfileDropzone />
+          </Paper>
         </Grid>
         <Grid item xs={12} md={8} sm={12}>
           <Paper variant="outlined" className={classes.paperWrapper}>

@@ -11,6 +11,7 @@ import { useState } from "react";
 import { Form } from "react-final-form";
 
 import Helmet from "react-helmet";
+import { useHistory } from "react-router-dom";
 import DropZone from "../../common/Dropzone";
 import PageTitle from "../../common/PageTitle";
 
@@ -20,12 +21,23 @@ const useStyles = makeStyles((theme) => ({
       "rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px",
     padding: 24,
   },
+  buttonWrapper: {
+    position: "relative",
+  },
+  button: {
+    position: "absolute",
+    top: -75,
+    "@media (max-width: 600px)": {
+      top: -50
+    },
+  },
 }));
 
 const Create = () => {
   // const [productImage, setProductImage] = useState([])
   const [files, setFiles] = useState([]);
   const classes = useStyles();
+  const history = useHistory();
 
   const onSubmit = (values) => {
     let submit = {
@@ -43,6 +55,19 @@ const Create = () => {
           link={"/dashboard/home"}
           page="Product"
         />
+        <Grid container className={classes.buttonWrapper}>
+          <Grid
+            item
+            xs={12}
+            container
+            justifyContent="flex-end"
+            className={classes.button}
+          >
+            <Button color="primary" variant="outlined" onClick={() => history.goBack()}>
+              Cancel
+            </Button>
+          </Grid>
+        </Grid>
         <Form
           onSubmit={onSubmit}
           render={({ handleSubmit }) => (
@@ -74,7 +99,11 @@ const Create = () => {
                       </Grid>
 
                       <Grid item xs={12}>
-                        <DropZone files={files} setFiles={setFiles} multiple={false} />
+                        <DropZone
+                          files={files}
+                          setFiles={setFiles}
+                          multiple={false}
+                        />
                       </Grid>
                     </Grid>
                   </Card>
