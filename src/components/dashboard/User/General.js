@@ -1,10 +1,11 @@
-import { Button, Grid, makeStyles, Paper } from "@material-ui/core";
+import { Button, FormControlLabel, Grid, makeStyles, Paper, Switch } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField2 from "@material-ui/core/TextField";
 import { TextField } from "mui-rff";
 import { Form } from "react-final-form";
 import { countries } from "../../../utils/countries";
 import ProfileDropzone from "../../common/ProfileDropzone";
+import { useState } from "react";
 
 const useStyles = makeStyles({
   paperWrapper: {
@@ -24,10 +25,15 @@ const initialValues = {
 };
 
 const General = () => {
+  const [ publicProfile, setPublicProfile ] = useState(false)
   const classes = useStyles();
   const onSubmit = (values) => {
     console.log(values);
   };
+
+  const handleChange = (e) => {
+    setPublicProfile(!publicProfile)
+  }
 
   return (
     <>
@@ -35,6 +41,16 @@ const General = () => {
         <Grid item xs={12} md={4} sm={12}>
           <Paper variant="outlined" className={classes.paperWrapper}>
             <ProfileDropzone />
+
+            <FormControlLabel 
+              control={
+                <Switch checked={publicProfile}
+                onChange={handleChange}
+                name="publicProfile"
+                color="primary" />
+              }
+              label="Public Profile"
+            />
           </Paper>
         </Grid>
         <Grid item xs={12} md={8} sm={12}>

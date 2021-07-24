@@ -37,6 +37,10 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
     console.log("contacts")
   }
 
+  const handleProfile = () => {
+    history.push("/dashboard/profile")
+  }
+
   return (
     <>
       <AppBar position="fixed" elevation={0} className={classes.appBar}>
@@ -61,7 +65,7 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
               >
                 <Group />
               </IconButton>
-              <IconButton>
+              <IconButton onClick={handleProfile}>
                 <Face />
               </IconButton>
 
