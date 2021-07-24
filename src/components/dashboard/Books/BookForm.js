@@ -43,8 +43,9 @@ const initialValues = {
   synopsis: "",
   authors: [],
   genres: [],
+  category: [],
+  tags: [],
   cover: "",
-  rating: "",
 };
 
 const BookForm = () => {
@@ -54,7 +55,13 @@ const BookForm = () => {
   const classes = useStyles();
   const history = useHistory();
 
-  const onSubmit = () => {};
+  const onSubmit = (values) => {
+    const submit = {
+      ...values,
+      rating
+    }
+    console.log(submit)
+  };
 
   return (
     <>
@@ -142,6 +149,26 @@ const BookForm = () => {
                           variant="outlined"
                           name="genres"
                           label="Genre/s"
+                        />
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <TextField
+                          fullWidth
+                          color="primary"
+                          variant="outlined"
+                          name="category"
+                          label="Categories"
+                        />
+                      </Grid>
+
+                      <Grid item xs={12}>
+                        <TextField
+                          fullWidth
+                          color="primary"
+                          variant="outlined"
+                          name="tags"
+                          label="Tag/s"
                         />
                       </Grid>
 
