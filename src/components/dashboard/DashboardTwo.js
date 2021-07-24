@@ -11,6 +11,8 @@ import Products from "./Ecommerce/Products";
 import Create from "./Ecommerce/Create";
 import Category from "./Ecommerce/Grouping/Category";
 import Tag from "./Ecommerce/Grouping/Tag";
+import BookForm from "./Books/BookForm";
+import Books from "./Books/Books";
 
 const drawerWidth = 280;
 
@@ -52,6 +54,8 @@ const DashboardTwo = () => {
           <Route path="/dashboard/home" component={Home} />
           <Route path="/dashboard/user" component={User} />
           <Route path="/dashboard/notifications" component={Notification} />
+          <Route path="/dashboard/book" component={BookForm} />
+          <Route path="/dashboard/books" component={Books} />
           <Route path="/dashboard/ecommerce/products" component={Products} />
           <Route path="/dashboard/ecommerce/create" component={Create} />
           <Route path="/dashboard/ecommerce/category" component={Category} />

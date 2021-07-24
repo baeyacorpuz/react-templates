@@ -1,19 +1,20 @@
 import {
   Button,
-  Card,
   Container,
   Grid,
-  InputAdornment,
   makeStyles,
+  Card,
+  Typography,
 } from "@material-ui/core";
+import { Rating } from "@material-ui/lab";
 import { TextField } from "mui-rff";
-import { useEffect, useState } from "react";
 import { Form } from "react-final-form";
-
-import Helmet from "react-helmet";
 import { useHistory } from "react-router-dom";
-import DropZone from "../../common/Dropzone";
+import Helmet from "react-helmet";
+
 import PageTitle from "../../common/PageTitle";
+import { useState } from "react";
+import FeaturedDropzone from "../../common/FeaturedDropzone";
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -28,37 +29,38 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: -75,
     "@media (max-width: 600px)": {
-      top: -50
+      top: -50,
     },
+  },
+  featuredImage: {
+    height: 200,
   },
 }));
 
-const Create = () => {
-  // const [productImage, setProductImage] = useState([])
-  const [files, setFiles] = useState([]);
+const initialValues = {
+  bookTitle: "",
+  bookDescription: "",
+  synopsis: "",
+  authors: [],
+  genres: [],
+  cover: "",
+  rating: "",
+};
+
+const BookForm = () => {
+  const [rating, setRating] = useState(0);
+  const [file, setFile] = useState([]);
+
   const classes = useStyles();
   const history = useHistory();
 
-  useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
+  const onSubmit = () => {};
 
-  const onSubmit = (values) => {
-    let submit = {
-      ...values,
-      productGallery: files,
-    };
-    console.log(submit);
-  };
   return (
     <>
-      <Helmet title="Create Product"></Helmet>
+      <Helmet title="Create Book"></Helmet>
       <Container maxWidth="lg">
-        <PageTitle
-          title="Create Product"
-          link={"/dashboard/home"}
-          page="Product"
-        />
+        <PageTitle title="Create Book" link={"/dashboard/home"} page="Book" />
         <Grid container className={classes.buttonWrapper}>
           <Grid
             item
@@ -67,26 +69,31 @@ const Create = () => {
             justifyContent="flex-end"
             className={classes.button}
           >
-            <Button color="primary" variant="outlined" onClick={() => history.goBack()}>
+            <Button
+              color="primary"
+              variant="outlined"
+              onClick={() => history.goBack()}
+            >
               Cancel
             </Button>
           </Grid>
         </Grid>
         <Form
           onSubmit={onSubmit}
+          initialValues={initialValues}
           render={({ handleSubmit }) => (
             <form onSubmit={handleSubmit} noValidate>
               <Grid container spacing={2}>
                 <Grid item md={8}>
                   <Card className={classes.cardWrapper}>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={2}>
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
                           color="primary"
                           variant="outlined"
-                          name="productName"
-                          label="Product Name"
+                          name="bookTitle"
+                          label="Book Title"
                         />
                       </Grid>
 
@@ -95,89 +102,67 @@ const Create = () => {
                           fullWidth
                           multiline
                           rows={10}
-                          variant="outlined"
-                          name="productDescription"
-                          label="Product Description"
                           color="primary"
+                          variant="outlined"
+                          name="bookDescription"
+                          label="Book Description"
                         />
                       </Grid>
 
                       <Grid item xs={12}>
-                        <DropZone
-                          files={files}
-                          setFiles={setFiles}
-                          multiple={false}
+                        <TextField
+                          fullWidth
+                          multiline
+                          rows={10}
+                          color="primary"
+                          variant="outlined"
+                          name="synopsis"
+                          label="Synopsis"
                         />
                       </Grid>
                     </Grid>
                   </Card>
                 </Grid>
-                <Grid item md={4} xs={12}>
+                <Grid item md={4}>
                   <Card className={classes.cardWrapper}>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12}>
-                        {/* <DropZone files={productImage} setFiles={setProductImage} multiple={false} /> */}
-                      </Grid>
-
+                    <Grid container spacing={2}>
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
                           color="primary"
                           variant="outlined"
-                          name="productCode"
-                          label="Product Code"
+                          name="authors"
+                          label="Author/s"
                         />
                       </Grid>
-
                       <Grid item xs={12}>
                         <TextField
                           fullWidth
                           color="primary"
                           variant="outlined"
-                          name="productSKU"
-                          label="Product SKU"
+                          name="genres"
+                          label="Genre/s"
                         />
                       </Grid>
 
-                      <Grid item xs={12}></Grid>
+                      <Grid item xs={12}>
+                        <Typography variant="caption" component="p">
+                          Rating
+                        </Typography>
+                        <Rating
+                          name="rating"
+                          value={rating}
+                          onChange={(event, newValue) => {
+                            setRating(newValue);
+                          }}
+                        />
+                      </Grid>
                     </Grid>
                   </Card>
 
                   <Card className={classes.cardWrapper}>
-                    <Grid container spacing={3}>
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="regularPrice"
-                          label="Regular Price"
-                          InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                $
-                              </InputAdornment>
-                            ),
-                          }}
-                        />
-                      </Grid>
-
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="salePrice"
-                          label="Sale Price"
-                          InputProps={{
-                            startAdornment: (
-                              <InputAdornment position="start">
-                                $
-                              </InputAdornment>
-                            ),
-                          }}
-                        />
-                      </Grid>
+                    <Grid item xs={12} className={classes.featuredImage}>
+                      <FeaturedDropzone file={file} setFile={setFile} />
                     </Grid>
                   </Card>
 
@@ -187,7 +172,7 @@ const Create = () => {
                     fullWidth
                     color="primary"
                   >
-                    Create Product
+                    Create Book
                   </Button>
                 </Grid>
               </Grid>
@@ -199,4 +184,4 @@ const Create = () => {
   );
 };
 
-export default Create;
+export default BookForm;

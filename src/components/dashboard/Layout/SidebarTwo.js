@@ -1,6 +1,7 @@
 import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
 import {
   HomeRounded,
+  LibraryBooksOutlined,
   PermIdentity,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
@@ -95,6 +96,15 @@ const navMenu = [
       "dashboard/ecommerce/tag",
     ],
   },
+  {
+    label: "Books",
+    link: "dashboard/books",
+    icon: <LibraryBooksOutlined />,
+    activePath: [
+      "dashboard/books",
+      "dashboard/book"
+    ]
+  }
 ];
 
 const SidebarMenuItem = (props) => {
