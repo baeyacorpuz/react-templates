@@ -50,7 +50,7 @@ const Books = () => {
     const loadInitialData = async () => {
       const data = await getBooks();
       setBooks(data);
-      // setLoading(false);
+      setLoading(false);
     };
 
     loadInitialData();
