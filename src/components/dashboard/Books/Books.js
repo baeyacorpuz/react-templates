@@ -17,6 +17,7 @@ import Helmet from "react-helmet";
 import { getBooks } from "../../../api/books";
 import PageTitle from "../../common/PageTitle";
 import BookCover from "../../../assets/images/book_cover.png";
+import SplashScreen from "../../common/SplashScreen";
 
 const useStyles = makeStyles((theme) => ({
   buttonWrapper: {
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
 const Books = () => {
   const classes = useStyles();
   const history = useHistory();
+  const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -48,6 +50,7 @@ const Books = () => {
     const loadInitialData = async () => {
       const data = await getBooks();
       setBooks(data);
+      // setLoading(false);
     };
 
     loadInitialData();
@@ -58,57 +61,61 @@ const Books = () => {
   };
 
   const handleBook = (book) => {
-    console.log(book.bookTitle)
-  }
+    console.log(book.bookTitle);
+  };
 
   return (
     <>
       <Helmet title="Product"></Helmet>
-      <Container maxWidth="lg">
-        <PageTitle title="Books" page="Book" link="/dashboard/books" />
-        <Grid container spacing={3} className={classes.buttonWrapper}>
-          <Grid
-            item
-            xs={12}
-            container
-            justifyContent="flex-end"
-            className={classes.button}
-          >
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={handleClick}
-              startIcon={<Add />}
+      {loading ? (
+        <>
+          <SplashScreen />
+        </>
+      ) : (
+        <Container maxWidth="lg">
+          <PageTitle title="Books" page="Book" link="/dashboard/books" />
+          <Grid container spacing={3} className={classes.buttonWrapper}>
+            <Grid
+              item
+              xs={12}
+              container
+              justifyContent="flex-end"
+              className={classes.button}
             >
-              New Book
-            </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleClick}
+                startIcon={<Add />}
+              >
+                New Book
+              </Button>
+            </Grid>
+            {books.length
+              ? books.map((book) => (
+                  <Grid item xs={12} md={3} sm={3}>
+                    <div>
+                      <Card>
+                        <CardActionArea onClick={() => handleBook(book)}>
+                          <CardMedia
+                            image={book.cover || BookCover}
+                            className={classes.media}
+                            alt={book.bookTitle}
+                          />
+                          <CardContent>
+                            <Typography variant="caption">
+                              {book.bookTitle}
+                            </Typography>
+                          </CardContent>
+                        </CardActionArea>
+                      </Card>
+                    </div>
+                  </Grid>
+                ))
+              : null}
           </Grid>
-          {books.length
-            ? books.map((book) => (
-                <Grid item xs={12} md={3} sm={3}>
-                  <div>
-                    <Card>
-                      <CardActionArea
-                        onClick={() => handleBook(book)}
-                      >
-                        <CardMedia
-                          image={book.cover || BookCover}
-                          className={classes.media}
-                          alt={book.bookTitle}
-                        />
-                        <CardContent>
-                          <Typography variant="caption">
-                            {book.bookTitle}
-                          </Typography>
-                        </CardContent>
-                      </CardActionArea>
-                    </Card>
-                  </div>
-                </Grid>
-              ))
-            : null}
-        </Grid>
-      </Container>
+        </Container>
+      )}
     </>
   );
 };
