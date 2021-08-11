@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 300,
     objectFit: "cover",
+    '@media (max-width: 600px)': {
+      height: 250
+    }
   },
 }));
 
@@ -93,9 +96,9 @@ const Books = () => {
             </Grid>
             {books.length
               ? books.map((book) => (
-                  <Grid item xs={12} md={3} sm={3}>
+                  <Grid item xs={6} md={3} sm={3}>
                     <div>
-                      <Card>
+                      <Card variant="outlined">
                         <CardActionArea onClick={() => handleBook(book)}>
                           <CardMedia
                             image={book.cover || BookCover}
