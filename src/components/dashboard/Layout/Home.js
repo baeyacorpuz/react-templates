@@ -76,10 +76,10 @@ const Home = () => {
                   <Button className={classes.controls} variant="contained" color="primary">Products</Button>
                 </CardContent>
               </div>
-              {/* <CardMedia
+              <CardMedia
                 className={classes.cover}
                 image={Reminder}
-              /> */}
+              />
             </Card>
           </Grid>
           <Grid item md={4}>
