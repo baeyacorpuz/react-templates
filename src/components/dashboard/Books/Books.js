@@ -35,16 +35,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const columns = [
-  {
-    field: "id",
-    headerName: "Book ID",
-    valueGetter: (params) => `${params.getValue("_id")}`,
-  },
-  { field: "bookTitle", headerName: "Book Title", sortable: true },
-  { field: "author", headerName: "Author/s", sortable: true },
-];
-
 const Books = () => {
   const classes = useStyles();
   const history = useHistory();
