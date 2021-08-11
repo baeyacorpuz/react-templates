@@ -114,6 +114,12 @@ const theme = createTheme({
       rounded: {
         borderRadius: 12
       }
+    },
+    MuiToolbar: {
+      gutters: {
+        paddingRight: 40,
+        paddingLeft: 40
+      }
     }
   }
 })

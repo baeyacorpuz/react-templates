@@ -1,9 +1,22 @@
-import { Button, Container, Grid, makeStyles } from "@material-ui/core";
+import {
+  Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Container,
+  Grid,
+  makeStyles,
+  Typography,
+} from "@material-ui/core";
+import { useEffect, useState } from "react";
 import { Add } from "@material-ui/icons";
-import { useEffect } from "react";
-import Helmet from "react-helmet";
 import { useHistory } from "react-router-dom";
+import Helmet from "react-helmet";
+
+import { getBooks } from "../../../api/books";
 import PageTitle from "../../common/PageTitle";
+import BookCover from "../../../assets/images/book_cover.png";
 
 const useStyles = makeStyles((theme) => ({
   buttonWrapper: {
@@ -16,19 +29,48 @@ const useStyles = makeStyles((theme) => ({
       top: -50,
     },
   },
+  media: {
+    height: 300,
+    objectFit: "cover",
+  },
 }));
+
+const columns = [
+  {
+    field: "id",
+    headerName: "Book ID",
+    valueGetter: (params) => `${params.getValue("_id")}`,
+  },
+  { field: "bookTitle", headerName: "Book Title", sortable: true },
+  { field: "author", headerName: "Author/s", sortable: true },
+];
 
 const Books = () => {
   const classes = useStyles();
   const history = useHistory();
+  const [books, setBooks] = useState([]);
 
   useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const data = await getBooks();
+      setBooks(data);
+    };
+
+    loadInitialData();
+  }, []);
 
   const handleClick = () => {
     history.push("/dashboard/book");
   };
+
+  const handleBook = (book) => {
+    console.log(book.bookTitle)
+  }
+
   return (
     <>
       <Helmet title="Product"></Helmet>
@@ -51,9 +93,30 @@ const Books = () => {
               New Book
             </Button>
           </Grid>
-          <Grid item xs={12}>
-            <div style={{ height: 600, width: "100%" }}></div>
-          </Grid>
+          {books.length
+            ? books.map((book) => (
+                <Grid item xs={12} md={3} sm={3}>
+                  <div>
+                    <Card>
+                      <CardActionArea
+                        onClick={() => handleBook(book)}
+                      >
+                        <CardMedia
+                          image={book.cover || BookCover}
+                          className={classes.media}
+                          alt={book.bookTitle}
+                        />
+                        <CardContent>
+                          <Typography variant="caption">
+                            {book.bookTitle}
+                          </Typography>
+                        </CardContent>
+                      </CardActionArea>
+                    </Card>
+                  </div>
+                </Grid>
+              ))
+            : null}
         </Grid>
       </Container>
     </>

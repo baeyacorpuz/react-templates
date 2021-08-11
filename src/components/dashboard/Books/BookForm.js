@@ -15,6 +15,7 @@ import Helmet from "react-helmet";
 import PageTitle from "../../common/PageTitle";
 import { useState } from "react";
 import FeaturedDropzone from "../../common/FeaturedDropzone";
+import { createBook } from "../../../api/books";
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -39,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
 
 const initialValues = {
   bookTitle: "",
-  bookDescription: "",
+  description: "",
   synopsis: "",
   authors: [],
   genres: [],
@@ -61,6 +62,8 @@ const BookForm = () => {
       rating
     }
     console.log(submit)
+    createBook(submit)
+    history.goBack()
   };
 
   return (
@@ -111,7 +114,7 @@ const BookForm = () => {
                           rows={10}
                           color="primary"
                           variant="outlined"
-                          name="bookDescription"
+                          name="description"
                           label="Book Description"
                         />
                       </Grid>
