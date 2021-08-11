@@ -7,7 +7,7 @@ import {
 } from "@material-ui/icons";
 import { NavLink, Link } from "react-router-dom";
 
-import Templated from "../../../assets/images/template.png";
+import Templated from "../../../assets/images/B.png";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 25px 0 5px",
     "& svg": {
       fontSize: 28,
-      fill: "#41B67F",
+      fill: "#435e93",
     },
   },
   sideBarListItem: {
@@ -62,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
     "& span": {
       fontSize: 14,
       lineHeight: 1,
-      color: "#41B67F",
+      color: "#435e93",
     },
   },
   logoWrapper: {

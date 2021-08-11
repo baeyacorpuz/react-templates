@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 150,
   },
   highlight: {
-    backgroundColor: "rgb(200, 250, 205)",
+    backgroundColor: "rgb(67, 94, 147, 50%)",
     border: "none",
   },
   root: {
@@ -73,13 +73,13 @@ const Home = () => {
                     If you are going to use a passage of Lorem Ipsum, you need
                     to be sure there isn't anything
                   </Typography>
-                  <Button className={classes.controls} variant="outlined" color="primary">Products</Button>
+                  <Button className={classes.controls} variant="contained" color="primary">Products</Button>
                 </CardContent>
               </div>
-              <CardMedia
+              {/* <CardMedia
                 className={classes.cover}
                 image={Reminder}
-              />
+              /> */}
             </Card>
           </Grid>
           <Grid item md={4}>

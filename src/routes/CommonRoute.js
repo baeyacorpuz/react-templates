@@ -7,7 +7,7 @@ const CommonRoute = ({ component: Component, ...rest }) => {
     <Route
       {...rest}
       render={(props) =>
-        TOKEN ? <Redirect to="/dashboard" /> : <Component {...props} />
+        TOKEN ? <Redirect to="/dashboard/home" /> : <Component {...props} />
       }
     />
   );

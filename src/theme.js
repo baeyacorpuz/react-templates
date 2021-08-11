@@ -45,19 +45,19 @@ const theme = createTheme({
     },
     type: 'light',
     primary: {
-      light: '#9dd6bd',
-      main: '#41B67F',
-      dark: '#33a16e',
+      // light: '#9dd6bd',
+      main: '#435e93',
+      // dark: '#33a16e',
     },
     secondary: {
-      main: '#1F236F',
+      main: '#7eb2de',
     },
     error: {
-      light: '#f5cfd1',
-      main: '#FA5656',
+      // light: '#f5cfd1',
+      main: '#f93944',
     },
     warning: {
-      main: '#F8B344',
+      main: '#fcecc9',
     },
     text: {
       primary: '#2F3542',
