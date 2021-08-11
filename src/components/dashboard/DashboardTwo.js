@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 
 import NavbarTwo from "./Layout/NavbarTwo";
 import SidebarTwo from "./Layout/SidebarTwo";
-import User from "./User/Profile";
+import Profile from "../dashboard/Profile/Profile"
 import Notification from "./Notifications/Notification";
 import Home from "./Layout/Home";
 import Products from "./Ecommerce/Products";
@@ -52,7 +52,7 @@ const DashboardTwo = () => {
         <div className={classes.toolbar} />
         <Switch>
           <Route path="/dashboard/home" component={Home} />
-          <Route path="/dashboard/profile" component={User} />
+          <Route path="/dashboard/profile" component={Profile} />
           <Route path="/dashboard/notifications" component={Notification} />
           <Route path="/dashboard/book" component={BookForm} />
           <Route path="/dashboard/books" component={Books} />

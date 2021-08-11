@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
   media: {
     height: 300,
     objectFit: "cover",
-    '@media (max-width: 600px)': {
-      height: 250
-    }
+    "@media (max-width: 600px)": {
+      height: 225,
+    },
   },
 }));
 
