@@ -105,11 +105,11 @@ const Books = () => {
           </Grid>
           <Grid container spacing={2}>
             <Grid item xs={12}>
-              <div style={{ maxHeight: 635, height: 450, width: "100%" }}>
+              <div style={{ height: 635, width: "100%" }}>
                 <DataGrid
                   rows={books}
                   columns={columns}
-                  pageSize={5}
+                  pageSize={10}
                   checkboxSelection
                   disableSelectionOnClick
                 />

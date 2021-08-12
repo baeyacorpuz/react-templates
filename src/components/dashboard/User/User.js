@@ -28,13 +28,18 @@ const columns = [
   },
   {
     field: "name",
-    headerName: "First name",
-    width: 300,
+    headerName: "Name",
+    width: 250,
   },
   {
     field: "country",
-    width: 300,
+    width: 250,
     headerName: "Country",
+  },
+  {
+    field: "emailAddress",
+    width: 250,
+    headerName: "Email Address",
   },
 ];
 
@@ -87,7 +92,7 @@ const User = () => {
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={12}>
-            <div style={{ maxHeight: 635, height: 450, width: "100%" }}>
+            <div style={{ height: 635, width: "100%" }}>
               <DataGrid
                 rows={users}
                 columns={columns}
