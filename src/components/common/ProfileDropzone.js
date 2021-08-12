@@ -1,5 +1,6 @@
 import { Box, Grid, makeStyles, Typography } from "@material-ui/core";
 import { PersonAdd } from "@material-ui/icons";
+import { useState } from "react";
 import Dropzone from "react-dropzone";
 
 const useStyles = makeStyles({
@@ -33,17 +34,29 @@ const useStyles = makeStyles({
     marginTop: 32,
     textAlign: "center",
   },
+  image: {
+    height: "inherit",
+    width: "inherit",
+    borderRadius: 100
+  }
 });
 
 const ProfileDropzone = () => {
   const classes = useStyles();
+  const [profile, setProfile] = useState(null);
 
   const onDrop = (file) => {
-    console.log(file);
+    setProfile(
+      file.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
+      )
+    );
   };
   return (
     <>
-      <Dropzone onDrop={onDrop} onDropRejected multiple={false}>
+      <Dropzone onDrop={onDrop} multiple={false}>
         {({ getRootProps, getInputProps }) => (
           <Grid container spacing={2}>
             <Grid
@@ -55,10 +68,16 @@ const ProfileDropzone = () => {
               className={classes.root}
             >
               <Box component="div" className={classes.boxWrapper}>
-                <Box component="div" className={classes.innerBoxWrapper}>
-                  <PersonAdd />
+                {profile ? (
+                  <Box component="div" className={classes.innerBoxWrapper}>
+                    <img src={profile[0].preview} alt="Profile" className={classes.image} />
+                  </Box>
+                ) : (
+                  <Box component="div" className={classes.innerBoxWrapper}>
+                    <PersonAdd />
                     <Typography variant="caption">Upload Photo</Typography>
-                </Box>
+                  </Box>
+                )}
               </Box>
               <input {...getInputProps()} />
               <Typography

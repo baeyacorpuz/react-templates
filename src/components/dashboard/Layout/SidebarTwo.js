@@ -81,8 +81,12 @@ const navMenu = [
   },
   {
     label: "User",
-    link: "dashboard/user",
+    link: "dashboard/users",
     icon: <PermIdentity />,
+    activePath: [
+      "dashboard/users",
+      "dashboard/user"
+    ]
   },
   {
     label: "Ecommerce",

@@ -1,13 +1,8 @@
 import {
   Button,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
   Container,
   Grid,
   makeStyles,
-  Typography,
 } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Add } from "@material-ui/icons";
@@ -16,8 +11,8 @@ import Helmet from "react-helmet";
 
 import { getBooks } from "../../../api/books";
 import PageTitle from "../../common/PageTitle";
-import BookCover from "../../../assets/images/book_cover.png";
 import SplashScreen from "../../common/SplashScreen";
+import { DataGrid } from "@material-ui/data-grid";
 
 const useStyles = makeStyles((theme) => ({
   buttonWrapper: {
@@ -39,6 +34,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const columns = [
+  {
+    field: "id",
+    headerName: "ID",
+    width: 150,
+  },
+  {
+    field: "bookTitle",
+    headerName: "Book Title",
+    width: 300,
+  },
+];
+
 const Books = () => {
   const classes = useStyles();
   const history = useHistory();
@@ -52,7 +60,11 @@ const Books = () => {
   useEffect(() => {
     const loadInitialData = async () => {
       const data = await getBooks();
-      setBooks(data);
+      const rows = data.map((book) => {
+        const { row_id, ...rest } = book;
+        return { id: book._id, ...rest };
+      });
+      setBooks(rows);
       setLoading(false);
     };
 
@@ -61,10 +73,6 @@ const Books = () => {
 
   const handleClick = () => {
     history.push("/dashboard/book");
-  };
-
-  const handleBook = (book) => {
-    console.log(book.bookTitle);
   };
 
   return (
@@ -94,28 +102,19 @@ const Books = () => {
                 New Book
               </Button>
             </Grid>
-            {books.length
-              ? books.map((book) => (
-                  <Grid item xs={6} md={3} sm={3}>
-                    <div>
-                      <Card variant="outlined">
-                        <CardActionArea onClick={() => handleBook(book)}>
-                          <CardMedia
-                            image={book.cover || BookCover}
-                            className={classes.media}
-                            alt={book.bookTitle}
-                          />
-                          <CardContent>
-                            <Typography variant="caption">
-                              {book.bookTitle}
-                            </Typography>
-                          </CardContent>
-                        </CardActionArea>
-                      </Card>
-                    </div>
-                  </Grid>
-                ))
-              : null}
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <div style={{ maxHeight: 635, height: 450, width: "100%" }}>
+                <DataGrid
+                  rows={books}
+                  columns={columns}
+                  pageSize={5}
+                  checkboxSelection
+                  disableSelectionOnClick
+                />
+              </div>
+            </Grid>
           </Grid>
         </Container>
       )}

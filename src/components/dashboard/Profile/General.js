@@ -1,10 +1,17 @@
-import { Button, FormControlLabel, Grid, makeStyles, Paper, Switch } from "@material-ui/core";
-import Autocomplete from "@material-ui/lab/Autocomplete";
-import TextField2 from "@material-ui/core/TextField";
+import {
+  Button,
+  FormControlLabel,
+  Grid,
+  makeStyles,
+  Paper,
+  Switch,
+} from "@material-ui/core";
+import { Autocomplete } from "@material-ui/lab";
 import { TextField } from "mui-rff";
 import { Form } from "react-final-form";
 import { countries } from "../../../utils/countries";
 import ProfileDropzone from "../../common/ProfileDropzone";
+import TextField2 from "@material-ui/core/TextField";
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -25,15 +32,15 @@ const initialValues = {
 };
 
 const General = () => {
-  const [ publicProfile, setPublicProfile ] = useState(false)
+  const [publicProfile, setPublicProfile] = useState(false);
   const classes = useStyles();
   const onSubmit = (values) => {
     console.log(values);
   };
 
   const handleChange = (e) => {
-    setPublicProfile(!publicProfile)
-  }
+    setPublicProfile(!publicProfile);
+  };
 
   return (
     <>
@@ -42,12 +49,14 @@ const General = () => {
           <Paper variant="outlined" className={classes.paperWrapper}>
             <ProfileDropzone />
 
-            <FormControlLabel 
+            <FormControlLabel
               control={
-                <Switch checked={publicProfile}
-                onChange={handleChange}
-                name="publicProfile"
-                color="primary" />
+                <Switch
+                  checked={publicProfile}
+                  onChange={handleChange}
+                  name="publicProfile"
+                  color="primary"
+                />
               }
               label="Public Profile"
             />

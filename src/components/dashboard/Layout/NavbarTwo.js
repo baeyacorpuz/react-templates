@@ -46,7 +46,7 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
       <AppBar position="fixed" elevation={0} className={classes.appBar}>
         <Toolbar>
           <IconButton
-            color="textPrimary"
+            color="primary"
             edge="start"
             onClick={handleDrawerToggle}
             className={classes.menuButton}

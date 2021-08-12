@@ -7,9 +7,10 @@ const headers = {
   }
 }
 
-export const createBook = async (data) => {
+export const createUser = async (data) => {
+  data.password = "welcome1"
   const apiResponse = await axios
-    .post(`${BASE_URL}/v1/book`, data, headers)
+    .post(`${BASE_URL}/v1/user`, data, headers)
     .then((response) => response.data)
     .catch((err) => {
       console.log(err.message)
@@ -18,13 +19,14 @@ export const createBook = async (data) => {
   return apiResponse;
 };
 
-export const getBooks = async () => {
-  const apiResponse = await axios
-    .get(`${BASE_URL}/v1/books`, headers)
-    .then((response) => response.data.book)
-    .catch((err) => {
-      console.log(err.message);
-    });
 
-  return apiResponse
-};
+export const getUsers = async () => {
+  const apiResponse = await axios
+    .get(`${BASE_URL}/v1/users`, headers)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err.message)
+    })
+
+  return apiResponse;
+}
