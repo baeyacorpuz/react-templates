@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   Button,
   Container,
@@ -13,9 +14,10 @@ import { useHistory } from "react-router-dom";
 import Helmet from "react-helmet";
 
 import PageTitle from "../../common/PageTitle";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import FeaturedDropzone from "../../common/FeaturedDropzone";
-import { createBook } from "../../../api/books";
+import { createBook, getAuthors, getCategories } from "../../../api/books";
+import MultiAutocomplete from "../../common/MultiAutocomplete";
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -42,28 +44,68 @@ const initialValues = {
   bookTitle: "",
   description: "",
   synopsis: "",
-  authors: [],
-  genres: [],
+  author: [],
+  genre: [],
   category: [],
-  tags: [],
+  tag: [],
   cover: "",
 };
 
 const BookForm = () => {
   const [rating, setRating] = useState(0);
   const [file, setFile] = useState([]);
+  const categories = [];
+  const tags = [];
+  const authors = [];
+  const genres = [];
+
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const data = await getCategories();
+      data.map((category) =>
+        categories.push({
+          label: category.category,
+          title: category.category,
+        })
+      );
+    };
+
+    loadInitialData();
+  }, [categories]);
+
+  useEffect(() => {
+    const loadInitialData = async () => {
+      const data = await getAuthors();
+      data.map((author) =>
+        authors.push({
+          label: author.authorName,
+          title: author.authorName,
+        })
+      );
+    };
+
+    loadInitialData();
+  }, [authors]);
 
   const classes = useStyles();
   const history = useHistory();
 
-  const onSubmit = (values) => {
+  const onSubmit = async (values) => {
+    const input = values.category.map((inputValue) => inputValue.label);
+    const inputTag = values.tag.map((inputValue) => inputValue.label);
+    const inputAuthor = values.author.map((inputValue) => inputValue.label);
+    const inputGenre = values.genre.map((inputValue) => inputValue.label);
     const submit = {
       ...values,
-      rating
-    }
-    console.log(submit)
-    createBook(submit)
-    history.goBack()
+      rating,
+      category: input,
+      tag: inputTag,
+      author: inputAuthor,
+      genre: inputGenre
+    };
+    console.log(submit);
+    createBook(submit);
+    history.goBack();
   };
 
   return (
@@ -137,40 +179,31 @@ const BookForm = () => {
                   <Card className={classes.cardWrapper}>
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="authors"
+                        <MultiAutocomplete
+                          name="author"
+                          options={authors}
                           label="Author/s"
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="genres"
+                        <MultiAutocomplete
+                          name="category"
+                          options={categories}
+                          label="Categories"
+                        />
+                      </Grid>
+                      <Grid item xs={12}>
+                        <MultiAutocomplete
+                          name="genre"
+                          options={genres}
                           label="Genre/s"
                         />
                       </Grid>
 
                       <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="category"
-                          label="Categories"
-                        />
-                      </Grid>
-
-                      <Grid item xs={12}>
-                        <TextField
-                          fullWidth
-                          color="primary"
-                          variant="outlined"
-                          name="tags"
+                        <MultiAutocomplete
+                          name="tag"
+                          options={tags}
                           label="Tag/s"
                         />
                       </Grid>

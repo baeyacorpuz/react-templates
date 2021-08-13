@@ -6,12 +6,10 @@ import {
   Paper,
   Switch,
 } from "@material-ui/core";
-import { Autocomplete } from "@material-ui/lab";
-import { TextField } from "mui-rff";
+import { TextField, Autocomplete } from "mui-rff";
 import { Form } from "react-final-form";
 import { countries } from "../../../utils/countries";
 import ProfileDropzone from "../../common/ProfileDropzone";
-import TextField2 from "@material-ui/core/TextField";
 import { useState } from "react";
 
 const useStyles = makeStyles({
@@ -22,7 +20,7 @@ const useStyles = makeStyles({
 
 const initialValues = {
   name: "Templated UI",
-  emailAddress: "demo@templated.com",
+  emailAddress: "demo@templated-chi.vercel.app",
   country: "Philippines",
   state: "Metro Manila",
   city: "Quezon City",
@@ -90,28 +88,29 @@ const General = () => {
                       />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
-                      <Autocomplete
-                        name="country"
-                        value={initialValues.country}
-                        placeholder={initialValues.country}
-                        style={{ width: "100%" }}
-                        options={countries}
-                        autoHighlight
-                        getOptionLabel={(option) => option.label}
-                        renderInput={(params) => (
-                          <TextField2
-                            {...params}
-                            label="Country"
-                            value={initialValues.country}
-                            placeholder={initialValues.country}
-                            variant="outlined"
-                            inputProps={{
-                              ...params.inputProps,
-                              autoComplete: "new-password", // disable autocomplete and autofill
-                            }}
-                          />
-                        )}
-                      />
+                    <Autocomplete
+                          name="country"
+                          options={countries}
+                          getOptionLabel={(option) => option.label}
+                          getOptionValue={(option) => option.label}
+                          renderOption={(option) => (
+                            <>
+                              {option.label} ({option.code}) +{option.phone}
+                            </>
+                          )}
+                          renderInput={(params) => (
+                            <TextField
+                              {...params}
+                              name="country"
+                              label="Country"
+                              variant="outlined"
+                              inputProps={{
+                                ...params.inputProps,
+                                autoComplete: 'new-password',
+                              }}
+                            />
+                          )}
+                        />
                     </Grid>
                     <Grid item xs={12} sm={12} md={6}>
                       <TextField

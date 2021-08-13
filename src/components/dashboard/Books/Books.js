@@ -1,18 +1,13 @@
-import {
-  Button,
-  Container,
-  Grid,
-  makeStyles,
-} from "@material-ui/core";
+import { Button, Container, Grid, makeStyles } from "@material-ui/core";
 import { useEffect, useState } from "react";
 import { Add } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
+import { DataGrid } from "@material-ui/data-grid";
 import Helmet from "react-helmet";
 
 import { getBooks } from "../../../api/books";
 import PageTitle from "../../common/PageTitle";
 import SplashScreen from "../../common/SplashScreen";
-import { DataGrid } from "@material-ui/data-grid";
 
 const useStyles = makeStyles((theme) => ({
   buttonWrapper: {
@@ -43,6 +38,16 @@ const columns = [
   {
     field: "bookTitle",
     headerName: "Book Title",
+    width: 300,
+  },
+  {
+    field: "author",
+    headerName: "Author/s",
+    width: "350",
+  },
+  {
+    field: "genre",
+    headerName: "Genre/s",
     width: 300,
   },
 ];

@@ -28,3 +28,26 @@ export const getBooks = async () => {
 
   return apiResponse
 };
+
+
+export const getCategories = async () => {
+  const apiResponse = await axios
+    .get(`${BASE_URL}/v1/categories`, headers)
+    .then((response) => response.data.categories)
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return apiResponse
+}
+
+export const getAuthors = async () => {
+  const apiResponse = await axios
+    .get(`${BASE_URL}/v1/authors`, headers)
+    .then((response) => response.data.authors)
+    .catch((err) => {
+      console.log(err.message);
+    });
+
+  return apiResponse
+}
