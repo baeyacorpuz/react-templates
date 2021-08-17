@@ -33,6 +33,7 @@ const useStyles = makeStyles({
     padding: 24,
     boxShadow:
       "rgb(145 158 171 / 24%) 0px 0px 2px 0px, rgb(145 158 171 / 24%) 0px 16px 32px -4px",
+    marginBottom: 25,
   },
 });
 
@@ -53,9 +54,9 @@ const UserForm = () => {
 
   const onSubmit = async (values) => {
     console.log(values);
-    const user = await createUser(values)
+    const user = await createUser(values);
     if (user.status) {
-      history.goBack()
+      history.goBack();
     }
   };
 
@@ -102,12 +103,12 @@ const UserForm = () => {
             </Paper>
           </Grid>
           <Grid item xs={12} md={8} sm={12}>
-            <Paper variant="outlined" className={classes.paperWrapper}>
-              <Form
-                onSubmit={onSubmit}
-                initialValues={initialValues}
-                render={({ handleSubmit }) => (
-                  <form>
+            <Form
+              onSubmit={onSubmit}
+              initialValues={initialValues}
+              render={({ handleSubmit }) => (
+                <form>
+                  <Paper variant="outlined" className={classes.paperWrapper}>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={12} md={6}>
                         <TextField
@@ -144,7 +145,7 @@ const UserForm = () => {
                               variant="outlined"
                               inputProps={{
                                 ...params.inputProps,
-                                autoComplete: 'new-password',
+                                autoComplete: "new-password",
                               }}
                             />
                           )}
@@ -184,20 +185,27 @@ const UserForm = () => {
                           color="primary"
                         />
                       </Grid>
-                      <Grid item xs={12} container justifyContent="flex-end">
-                        <Button
-                          color="primary"
-                          variant="outlined"
-                          onClick={handleSubmit}
-                        >
-                          Save
-                        </Button>
-                      </Grid>
                     </Grid>
-                  </form>
-                )}
-              />
-            </Paper>
+                  </Paper>
+                  <Grid container justifyContent="flex-end">
+                    <Grid
+                      item
+                      xs={12}
+                      sm={6}
+                    >
+                      <Button
+                        variant="contained"
+                        onClick={handleSubmit}
+                        fullWidth
+                        color="primary"
+                      >
+                        Save
+                      </Button>
+                    </Grid>
+                  </Grid>
+                </form>
+              )}
+            />
           </Grid>
         </Grid>
       </Container>

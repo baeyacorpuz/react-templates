@@ -20,7 +20,7 @@ const PageTitle = ({ title, link, page }) => {
           <Typography variant="h2">{title}</Typography>
 
           <Breadcrumbs className={classes.breadcrumbs}>
-            <Link color="inherit" to="/dashboard-2">
+            <Link color="inherit" to="/dashboard/home">
               Dashboard
             </Link>
             <Link color="inherit" to={link}>

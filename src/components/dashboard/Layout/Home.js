@@ -12,6 +12,7 @@ import {
 import Helmet from "react-helmet";
 import PageTitle from "../../common/PageTitle";
 import Reminder from "../../../assets/images/svg/reminder.svg"
+import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
   paperWrapper: {
@@ -59,7 +60,8 @@ const Home = () => {
           <Grid item md={8}>
             <Card
               variant="outlined"
-              className={[classes.paperWrapper, classes.highlight, classes.root]}
+              // className={[classes.paperWrapper, classes.highlight, classes.root]}
+              className={clsx(classes.paperWrapper, classes.highlight, classes.root)}
             >
               <div className={classes.details}>
                 <CardContent className={classes.content}>
