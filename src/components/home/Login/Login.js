@@ -1,29 +1,61 @@
-import { Container, Grid, Button, Typography, Box } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  Button,
+  Typography,
+  Box,
+  makeStyles,
+} from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import { TextField } from "mui-rff";
 import { Form } from "react-final-form";
 import { Link, useHistory } from "react-router-dom";
 import { login } from "../../../api/auth";
 
+const useStyles = makeStyles({
+  header: {
+    marginBottom: 50,
+  },
+});
+
 const Login = () => {
   const history = useHistory();
+  const classes = useStyles();
 
   const onSubmit = (values) => {
     const data = login(values);
     if (JSON.stringify(data) === "true") {
-      history.go("/dashboard/home")
+      history.go("/dashboard/home");
       localStorage.setItem("token", data);
     } else {
-      console.log("false")
+      console.log("false");
     }
   };
 
-  console.log("login")
+  console.log("login");
 
   return (
     <Container maxWidth="lg">
       <Grid container spacing={1}>
-        <Grid item md={8} sm={12}></Grid>
-        <Grid item md={4} sm={12}>
+        <Grid item md={7} sm={12}></Grid>
+        <Grid item md={5} sm={12}>
+          <Grid item xs={12} className={classes.header}>
+            <div>
+              <Typography component="p" gutterBottom variant="h3">
+                Sign in to B
+              </Typography>
+            </div>
+            <div>
+              <Typography component="p" variant="caption" color="textSecondary">
+                Enter your details below
+              </Typography>
+            </div>
+          </Grid>
+          <Grid item xs={12} className={classes.header}>
+            <Alert severity="info">
+              Use email : demo@templated-chi.vercel.app / password : demo1234
+            </Alert>
+          </Grid>
           <Form
             onSubmit={onSubmit}
             initialValues={{
@@ -35,8 +67,8 @@ const Login = () => {
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
                     <TextField
-                      name="username"
-                      label="Username"
+                      name="emailAddress"
+                      label="Email Address"
                       variant="outlined"
                       fullWidth
                     />
@@ -49,6 +81,11 @@ const Login = () => {
                       type="password"
                       fullWidth
                     />
+                  </Grid>
+                  <Grid item xs={12} container justifyContent="flex-end">
+                    <Typography variant="caption" color="primary">
+                      <Link to="/forgot-password">Forgot your password?</Link>
+                    </Typography>
                   </Grid>
                   <Grid item sm={12}>
                     <Button
@@ -66,10 +103,6 @@ const Login = () => {
                       <Typography variant="overline">
                         {"Don’t have an account yet? "}
                         <Link to="/sign-up">Sign Up</Link>
-                      </Typography>
-                      {"    "}
-                      <Typography variant="overline">
-                        <Link to="/forgot-password">Forgot your password?</Link>
                       </Typography>
                     </Box>
                   </Grid>

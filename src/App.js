@@ -1,14 +1,16 @@
-import { BrowserRouter } from 'react-router-dom';
-import { Helmet } from 'react-helmet';
+import { BrowserRouter } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
-
-import './App.css';
-import MainRoute from './routes/MainRoute';
+import "./App.css";
+import MainRoute from "./routes/MainRoute";
 
 const App = () => {
   return (
     <>
-      <Helmet defaultTitle="Templated" titleTemplate="%s - Design & Development"></Helmet>
+      <Helmet
+        defaultTitle="Templated"
+        titleTemplate="%s - Design & Development"
+      ></Helmet>
 
       <div className="">
         <header className="App-header">
@@ -19,6 +21,6 @@ const App = () => {
       </div>
     </>
   );
-}
+};
 
 export default App;
