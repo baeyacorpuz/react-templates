@@ -8,7 +8,7 @@ const SignUp = () => {
         <Grid item md={8}></Grid>
         <Grid item md={4}>
           <Grid container spacing={2}>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="firstName"
                 label="First Name"
@@ -16,7 +16,7 @@ const SignUp = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="lastName"
                 label="Last Name"
@@ -24,7 +24,7 @@ const SignUp = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="username"
                 label="Username"
@@ -32,15 +32,16 @@ const SignUp = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="password"
                 label="Password"
                 variant="outlined"
                 fullWidth
+                type="password"
               />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <Button
                 size="large"
                 fullWidth

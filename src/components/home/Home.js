@@ -8,11 +8,18 @@ import ResetPassword from './ForgotPassword/ResetPassword';
 import Login from './Login/Login';
 import SignUp from './SignUp/SignUp';
 
+import Background from "../../assets/images/Background.jpg"
+
 const useStyles = makeStyles((theme) => ({
   displayFlex: {
     display: "flex",
     minHeight: "100vh",
-    alignItems: "center"
+    alignItems: "center",
+    backgroundImage: `url(${Background})`,
+    backgroundSize: "cover",
+    '@media(min-width: 1280px)': {
+      maxWidth: "100vw"
+    }
   }
 }))
 

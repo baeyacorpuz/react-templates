@@ -33,7 +33,7 @@ const Login = () => {
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit} noValidate>
                 <Grid container spacing={2}>
-                  <Grid item sm={12}>
+                  <Grid item xs={12}>
                     <TextField
                       name="username"
                       label="Username"
@@ -41,11 +41,12 @@ const Login = () => {
                       fullWidth
                     />
                   </Grid>
-                  <Grid item sm={12}>
+                  <Grid item xs={12}>
                     <TextField
                       name="password"
                       label="Password"
                       variant="outlined"
+                      type="password"
                       fullWidth
                     />
                   </Grid>
@@ -53,7 +54,7 @@ const Login = () => {
                     <Button
                       size="large"
                       fullWidth
-                      variant="outlined"
+                      variant="contained"
                       color="primary"
                       type="submit"
                       onClick={handleSubmit}

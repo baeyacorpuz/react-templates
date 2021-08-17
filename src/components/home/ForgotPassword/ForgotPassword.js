@@ -8,7 +8,7 @@ const ForgotPassword = () => {
         <Grid item md={8} sm={12}></Grid>
         <Grid item md={4} sm={12}>
           <Grid container spacing={2}>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <TextField
                 name="emailAddress"
                 label="Email Address"
@@ -16,11 +16,11 @@ const ForgotPassword = () => {
                 fullWidth
               />
             </Grid>
-            <Grid item sm={12}>
+            <Grid item xs={12}>
               <Button
                 size="large"
                 fullWidth
-                variant="outlined"
+                variant="contained"
                 color="primary"
                 type="submit"
               >Submit</Button>
