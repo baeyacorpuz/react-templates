@@ -6,6 +6,7 @@ import Helmet from "react-helmet";
 import { useHistory } from "react-router-dom";
 import { getUsers } from "../../../api/users";
 import PageTitle from "../../common/PageTitle";
+import SplashScreen from "../../common/SplashScreen";
 
 const useStyles = makeStyles({
   buttonWrapper: {
@@ -47,6 +48,7 @@ const User = () => {
   const classes = useStyles();
   const history = useHistory();
   const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
     history.push("/dashboard/user");
@@ -62,6 +64,7 @@ const User = () => {
       });
       console.log(rows);
       await setUsers(rows);
+      setLoading(false);
     };
 
     loadInitialData();
@@ -69,41 +72,47 @@ const User = () => {
 
   return (
     <>
-      <Helmet title="Product"></Helmet>
-      <Container maxWidth="lg">
-        <PageTitle title="Users" page="User" link="/dashboard/user" />
-        <Grid container spacing={3} className={classes.buttonWrapper}>
-          <Grid
-            item
-            xs={12}
-            container
-            justifyContent="flex-end"
-            className={classes.button}
-          >
-            <Button
-              color="primary"
-              variant="contained"
-              onClick={handleClick}
-              startIcon={<Add />}
+      <Helmet title="Users"></Helmet>
+      {loading ? (
+        <>
+          <SplashScreen />
+        </>
+      ) : (
+        <Container maxWidth="lg">
+          <PageTitle title="Users" page="User" link="/dashboard/user" />
+          <Grid container spacing={3} className={classes.buttonWrapper}>
+            <Grid
+              item
+              xs={12}
+              container
+              justifyContent="flex-end"
+              className={classes.button}
             >
-              New User
-            </Button>
+              <Button
+                color="primary"
+                variant="contained"
+                onClick={handleClick}
+                startIcon={<Add />}
+              >
+                New User
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-        <Grid container spacing={2}>
-          <Grid item xs={12}>
-            <div style={{ height: 635, width: "100%" }}>
-              <DataGrid
-                rows={users}
-                columns={columns}
-                pageSize={10}
-                checkboxSelection
-                disableSelectionOnClick
-              />
-            </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <div style={{ height: 635, width: "100%" }}>
+                <DataGrid
+                  rows={users}
+                  columns={columns}
+                  pageSize={10}
+                  checkboxSelection
+                  disableSelectionOnClick
+                />
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
+        </Container>
+      )}
     </>
   );
 };
