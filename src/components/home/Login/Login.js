@@ -25,8 +25,8 @@ const Login = () => {
   const onSubmit = async (values) => {
     const data = await login(values);
     if (data.status) {
-      history.go("/dashboard/home");
       sessionStorage.setItem("token", data.token);
+      history.go("/dashboard/home");
     } else {
       console.log("false");
     }
