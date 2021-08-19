@@ -1,9 +1,4 @@
-import {
-  Drawer,
-  Hidden,
-  List,
-  makeStyles,
-} from "@material-ui/core";
+import { Button, Drawer, Hidden, List, makeStyles } from "@material-ui/core";
 import {
   HomeRounded,
   LibraryBooksOutlined,
@@ -76,6 +71,12 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     width: 90,
   },
+  side: {
+    height: "-webkit-fill-available",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
 }));
 
 const navMenu = [
@@ -136,27 +137,37 @@ const SidebarMenuItem = (props) => {
 const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
 
+  const handleLogout = async () => {
+    console.log("here")
+    localStorage.clear("token")
+  }
+
   const drawer = (
-    <>
-      {/* <div className={classes.toolbar} /> */}
-      <div className={classes.logoWrapper}>
-        {/* <Typography variant="h2">Templated</Typography> */}
-        <Link to={"/dashboard/home"}>
-          <img className={classes.logo} src={Templated} alt="template logo" />
-        </Link>
+    <div className={classes.side}>
+      <div>
+        {/* <div className={classes.toolbar} /> */}
+        <div className={classes.logoWrapper}>
+          {/* <Typography variant="h2">Templated</Typography> */}
+          <Link to={"/dashboard/home"}>
+            <img className={classes.logo} src={Templated} alt="template logo" />
+          </Link>
+        </div>
+        <List>
+          {navMenu.map((navItem) => (
+            <SidebarMenuItem
+              to={navItem.link}
+              key={navItem.link}
+              activePath={navItem.activePath}
+              label={navItem.label}
+              icon={navItem.icon}
+            />
+          ))}
+        </List>
       </div>
-      <List>
-        {navMenu.map((navItem) => (
-          <SidebarMenuItem
-            to={navItem.link}
-            key={navItem.link}
-            activePath={navItem.activePath}
-            label={navItem.label}
-            icon={navItem.icon}
-          />
-        ))}
-      </List>
-    </>
+      <div>
+        <Button color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
+      </div>
+    </div>
   );
 
   return (
