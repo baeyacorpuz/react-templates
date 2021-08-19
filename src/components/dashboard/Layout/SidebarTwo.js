@@ -1,4 +1,9 @@
-import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
+import {
+  Drawer,
+  Hidden,
+  List,
+  makeStyles,
+} from "@material-ui/core";
 import {
   HomeRounded,
   LibraryBooksOutlined,
@@ -83,10 +88,7 @@ const navMenu = [
     label: "User",
     link: "dashboard/users",
     icon: <PermIdentity />,
-    activePath: [
-      "dashboard/users",
-      "dashboard/user"
-    ]
+    activePath: ["dashboard/users", "dashboard/user"],
   },
   {
     label: "Ecommerce",
@@ -104,11 +106,8 @@ const navMenu = [
     label: "Books",
     link: "dashboard/books",
     icon: <LibraryBooksOutlined />,
-    activePath: [
-      "dashboard/books",
-      "dashboard/book"
-    ]
-  }
+    activePath: ["dashboard/books", "dashboard/book"],
+  },
 ];
 
 const SidebarMenuItem = (props) => {
@@ -119,11 +118,6 @@ const SidebarMenuItem = (props) => {
     <li>
       <NavLink
         exact
-        // isActive={
-        //   activePath &&
-        //   ((_, { pathname }) =>
-        //     activePath.some((path) => path === pathname.split("/")[1]))
-        // }
         isActive={
           activePath &&
           ((_, { pathname }) =>

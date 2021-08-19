@@ -22,17 +22,15 @@ const Login = () => {
   const history = useHistory();
   const classes = useStyles();
 
-  const onSubmit = (values) => {
-    const data = login(values);
-    if (JSON.stringify(data) === "true") {
+  const onSubmit = async (values) => {
+    const data = await login(values);
+    if (data.status) {
       history.go("/dashboard/home");
-      localStorage.setItem("token", data);
+      sessionStorage.setItem("token", data.token);
     } else {
       console.log("false");
     }
   };
-
-  console.log("login");
 
   return (
     <Container maxWidth="lg">
@@ -59,8 +57,8 @@ const Login = () => {
           <Form
             onSubmit={onSubmit}
             initialValues={{
-              username: "",
-              passowrd: "",
+              emailAddress: "",
+              password: "",
             }}
             render={({ handleSubmit }) => (
               <form onSubmit={handleSubmit} noValidate>
