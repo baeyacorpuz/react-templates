@@ -10,6 +10,16 @@ export const login = async (data) => {
       console.log(err.message)
     })
 
-  console.log(apiResponse)
+  return apiResponse;
+}
+
+export const signup = async (data) => {
+  const apiResponse = await axios
+    .post(`${BASE_URL}/signup`, data)
+    .then((response) => response.data)
+    .catch((err) => {
+      console.log(err.message)
+    })
+
   return apiResponse;
 }

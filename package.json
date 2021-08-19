@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "country-data-list": "^1.2.1",
     "country-js": "^0.0.9",
     "country-list-js": "^3.1.7",
     "crypto-ld": "^6.0.0",

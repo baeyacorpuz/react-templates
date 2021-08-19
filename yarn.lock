@@ -4041,6 +4041,13 @@
     "path-type" "^4.0.0"
     "yaml" "^1.10.0"
 
+"country-data-list@^1.2.1":
+  "integrity" "sha512-FiW0PB/OVdx88BxRcbBY55ozr+uq2p7cYf1nmX7Q75uRfguHohB5qeQoizVm8ECBjryA79U3UudeG2T+puw3dw=="
+  "resolved" "https://registry.npmjs.org/country-data-list/-/country-data-list-1.2.1.tgz"
+  "version" "1.2.1"
+  dependencies:
+    "currency-symbol-map" "~5"
+
 "country-js@^0.0.9":
   "integrity" "sha512-Fm2Lh3DOywdEZJBJo+IJueUhoAo2uBOmgHZPQncEaVH/LKqFhJqiGj/daBC51lr7JKlrYdN/EpP1tZX6D2A2Ig=="
   "resolved" "https://registry.npmjs.org/country-js/-/country-js-0.0.9.tgz"
@@ -4388,6 +4395,11 @@
   "integrity" "sha512-jXKhWqXPmlUeoQnF/EhTtTl4C9SnrxSH/jZUih3jmO6lBKr99rP3/+FmrMj4EFpOXzMtXHAZkd3x0E6h6Fgflw=="
   "resolved" "https://registry.npmjs.org/csstype/-/csstype-3.0.8.tgz"
   "version" "3.0.8"
+
+"currency-symbol-map@~5":
+  "integrity" "sha512-2yHvoVBPIS9Dx7fjritu9l7UHWo4Z3D2oQnQj8AYwUee2j/PAcoHB4issCqwabfbipISZ/iG6vVYsfrAoks2eA=="
+  "resolved" "https://registry.npmjs.org/currency-symbol-map/-/currency-symbol-map-5.0.1.tgz"
+  "version" "5.0.1"
 
 "cyclist@^1.0.1":
   "integrity" "sha1-WW6WmP0MgOEgOMK4LW6xs1tiJNk="
