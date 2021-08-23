@@ -7,7 +7,7 @@ import {
 } from "@material-ui/icons";
 import { NavLink, Link } from "react-router-dom";
 
-import Templated from "../../../assets/images/B.png";
+import Templated from "../../../assets/images/Templated.png";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
