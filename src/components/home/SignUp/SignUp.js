@@ -37,7 +37,6 @@ const SignUp = () => {
     console.log(values)
     const submit = {
       ...values,
-      country: values.country.name,
     };
     const data = await signup(submit);
     if (data.status) {

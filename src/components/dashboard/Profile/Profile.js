@@ -45,6 +45,8 @@ const User = () => {
   const [value, setValue] = useState(0);
   const classes = useStyles();
 
+  const user = useState(JSON.parse(localStorage.getItem("user")))
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -71,7 +73,7 @@ const User = () => {
           </Grid>
         </Grid>
         <TabPanel value={value} index={0}>
-          <General />
+          <General user={user}  />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <SocialLinks />

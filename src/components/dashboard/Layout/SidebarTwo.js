@@ -138,8 +138,8 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
 
   const handleLogout = async () => {
-    console.log("here")
     localStorage.clear("token")
+    window.location.reload(); 
   }
 
   const drawer = (
@@ -165,7 +165,7 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
         </List>
       </div>
       <div>
-        <Button color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
+        <Button fullWidth size="large" color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
       </div>
     </div>
   );

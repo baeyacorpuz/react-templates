@@ -24,8 +24,10 @@ const Login = () => {
 
   const onSubmit = async (values) => {
     const data = await login(values);
+    const storageUser = JSON.stringify(data.user)
     if (data.status) {
       localStorage.setItem("token", data.token);
+      localStorage.setItem("user",storageUser)
       history.go("/dashboard/home");
     } else {
       console.log("false");

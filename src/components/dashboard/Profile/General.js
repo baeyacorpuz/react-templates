@@ -18,20 +18,12 @@ const useStyles = makeStyles({
   },
 });
 
-const initialValues = {
-  name: "Templated UI",
-  emailAddress: "demo@templated-chi.vercel.app",
-  country: "Philippines",
-  state: "Metro Manila",
-  city: "Quezon City",
-  zipCode: "1105",
-  about:
-    "Nullam cursus lacinia erat. Vestibulum suscipit nulla quis orci. Fusce a quam. Morbi mollis tellus ac sapien. Praesent nonummy mi in odio.",
-};
-
-const General = () => {
+const General = ({user}) => {
   const [publicProfile, setPublicProfile] = useState(false);
   const classes = useStyles();
+
+  const initialValues = user[0]
+
   const onSubmit = (values) => {
     console.log(values);
   };
