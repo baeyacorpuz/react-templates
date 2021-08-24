@@ -1,9 +1,9 @@
-import { Collapse, Divider, Typography } from "@material-ui/core";
-import { Button, Drawer, Hidden, List, makeStyles } from "@material-ui/core";
-import { useState } from "react";
+import { Button, Divider, Typography } from "@material-ui/core";
+import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
+import { Fragment } from "react";
 import { NavLink, Link } from "react-router-dom";
 
-import Templated from "../../../assets/images/templated.png";
+import Templated from "../../../assets/images/coral_name.png";
 import { menuList } from "../../../utils/menuData";
 
 const drawerWidth = 280;
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: theme.mixins.toolbar,
   logo: {
-    width: 70,
+    width: 100,
+    margin: "8px 20px 8px 30px"
   },
   side: {
     height: "-webkit-fill-available",
@@ -27,58 +28,54 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "space-between",
   },
-  itemWrapper: {
-    width: 230,
-    margin: "0 auto",
-    paddingBottom: 24
-  },
-  link: {
-    background: "transparent",
-    cursor: "pointer",
-    transition: "opacity 0.3s ease",
-    "&[disabled]": {
-      pointerEvents: "none",
+  sideBarListItem: {
+    padding: "12px 20px 11px 40px",
+    display: 'block',
+    opacity: 0.65,
+    border: 0,
+    background: 'transparent',
+    cursor: 'pointer',
+    transition: 'opacity 0.3s ease',
+    '&[disabled]': {
+      pointerEvents: 'none',
     },
-    "&.active, &:hover": {
+    '&.active, &:hover': {
       opacity: 1,
     },
-    "&.active, &:focus": {
+    '&.active, &:focus': {
       outline: 1,
     },
-    "& span": {
-      fontSize: 14,
+    '& span': {
+      fontSize: 12,
+      fontWeight: 500,
       lineHeight: 1,
-      color: "#435e93",
     },
-    textTransform: "uppercase"
   },
-  logoutButton: {
-    margin: "0 auto",
-    width: 240,
-    "& .MuiButton-label": {
-      display: "flex",
-      justifyContent: "flex-start"
+  subList: {
+    margin: "8px 20px 8px 40px"
+  },
+  listItem: {
+    "& .active, &:focus": {
+      backgroundColor: "beige",
+      color: "coral"
     },
-    "& .MuiButton-textPrimary:hover": {
-      backgroundColor: "transparent"
+    '& .active': {
+      backgroundColor: "beige",
+      color: "coral",
+      borderRight: "3px solid coral"
+    },
+    "&:hover": {
+      backgroundColor: "#F2F2F0",
     }
-  },
-  collapsItem: {
-    paddingLeft: 40
   }
 }));
 
 const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
-  const [open, setOpen] = useState(false)
 
   const handleLogout = async () => {
     localStorage.clear("token")
     window.location.reload();
-  }
-
-  const handleClick = () => {
-    setOpen(!open)
   }
 
   const drawer = (
@@ -89,55 +86,36 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
             <img className={classes.logo} src={Templated} alt="template logo" />
           </Link>
         </div>
-        <Divider />
         <List>
-          {menuList.map((value) => (
-            <div key={value.label} className={classes.itemWrapper}>
-              <Typography variant="overline" color="textSecondary">{value.label}</Typography>
-              {value.items.map((item) => (
-                item.items ? (
-                  <li key={item.key}>
-                    <div className={classes.link} onClick={handleClick}>
-                      <span>{item.label}</span>
-                    </div>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                      <List>
-                        {item.items.map((nested) => (
-                          <li key={nested.key} className={classes.collapsItem}>
-                            <NavLink
-                              exact
-                              to={`/d/books/${nested.key}`}
-                              className={classes.link}
-                            >
-                              <span>{nested.label}</span>
-                            </NavLink>
-                          </li>
-                        ))}
-                      </List>
-                    </Collapse>
-                  </li>
-                ) : (
-                  <li key={item.key}>
-                    <NavLink
-                      exact
-                      isActive={
-                        value.activePath &&
-                        ((_, { pathname }) =>
-                          value.activePath.some((path) => pathname.includes(path)))
-                      }
-                      to={`/d/${item.key}`}
-                      className={classes.link}
-                    >
-                      <span>{item.label}</span>
-                    </NavLink>
-                  </li>
-                )
-              ))}
-            </div>
+          <Divider />
+          {menuList.map((list) => (
+            <Fragment key={list.key}>
+              <li key={list.key}>
+                <Typography className={classes.subList} variant="overline">{list.label}</Typography>
+                {list.items.map((item) => (
+                  <Fragment key={item.key}>
+                    <li key={item.key} className={classes.listItem}>
+                      <NavLink
+                        exact
+                        to={`${item.key}`}
+                        isActive={
+                          item.activePath &&
+                          ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path)))
+                        }
+                        className={classes.sideBarListItem}
+                        activeClassName="active"
+                      >
+                        <Typography variant="h6">{item.label}</Typography>
+                      </NavLink>
+                    </li>
+                  </Fragment>
+                ))}
+              </li>
+            </Fragment>
           ))}
         </List>
       </div>
-      <div className={classes.logoutButton}>
+      <div>
         <Button fullWidth color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
       </div>
     </div >

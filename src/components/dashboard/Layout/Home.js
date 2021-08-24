@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
     minHeight: 150,
   },
   highlight: {
-    backgroundColor: "rgb(67, 94, 147, 50%)",
+    backgroundColor: "beige",
     border: "none",
   },
   root: {

@@ -59,7 +59,7 @@ const Category = () => {
           page="Category"
         />
         <Grid container spacing={3}>
-          <Grid item xs={12} md={4}>
+          <Grid item xs={12} md={4} sm={6}>
             <Form
               onSubmit={onSubmit}
               render={({ handleSubmit }) => (
@@ -105,7 +105,7 @@ const Category = () => {
               )}
             />
           </Grid>
-          <Grid item xs={12} md={8}>
+          <Grid item xs={12} md={8} sm={6}>
             <Card className={classes.cardWrapper}>
               <div style={{ height: 600, width: "100%" }}>
                 <DataGrid

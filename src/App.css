@@ -84,7 +84,7 @@ body::backdrop {
 .MuiDataGrid-window {
   overflow-y: hidden !important;
 }
-
+/* 
 .MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-6.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0::-webkit-scrollbar-track {
   background: #f1f1f1;
 }
@@ -102,4 +102,4 @@ body::backdrop {
 
 .MuiPaper-root.MuiDrawer-paper.makeStyles-drawerPaper-6.MuiDrawer-paperAnchorLeft.MuiDrawer-paperAnchorDockedLeft.MuiPaper-elevation0::backdrop {
   background-color: #fafafa;
-}
+} */

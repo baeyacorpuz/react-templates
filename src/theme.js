@@ -32,7 +32,9 @@ const theme = createTheme({
       fontSize: '1rem',
     },
     h6: {
-      fontSize: '1rem',
+      fontSize: '14px',
+      fontWeight: 500,
+      textTransform: "uppercase"
     },
     caption: {
       fontSize: 12
@@ -45,16 +47,13 @@ const theme = createTheme({
     },
     type: 'light',
     primary: {
-      // light: '#9dd6bd',
-      main: '#435e93',
-      // dark: '#33a16e',
+      main: '#FF7F50',
     },
     secondary: {
-      main: '#7eb2de',
+      main: '#23609F',
     },
     error: {
-      // light: '#f5cfd1',
-      main: '#f93944',
+      main: '#660000',
     },
     warning: {
       main: '#fcecc9',
@@ -65,7 +64,7 @@ const theme = createTheme({
   },
   props: {
     MuiButtonBase: {
-      disableRipple: true,
+      disableRipple: false,
     },
   },
   overrides: {
