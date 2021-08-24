@@ -16,6 +16,11 @@ const useStyles = makeStyles((theme) => ({
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
     },
+    backgroundColor: "rgba(255, 255, 255, 0.2) !important",
+    backdropFilter: "blur(5px)",
+    "@media (min-width: 600px)": {
+      minHeight: 79,
+    },
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -23,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
       display: "none",
     },
   },
+  toolBar: {
+    "@media (min-width: 600px)": {
+      minHeight: 79,
+    },
+  }
 }));
 
 const NavbarTwo = ({ handleDrawerToggle }) => {
@@ -30,7 +40,7 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
   const history = useHistory();
 
   const handleNotifications = () => {
-    history.push("/dashboard/notifications")
+    history.push("/d/notifications")
   }
   
   const handleContacts = () => {
@@ -38,13 +48,13 @@ const NavbarTwo = ({ handleDrawerToggle }) => {
   }
 
   const handleProfile = () => {
-    history.push("/dashboard/profile")
+    history.push("/d/profile")
   }
 
   return (
     <>
       <AppBar position="fixed" elevation={0} className={classes.appBar}>
-        <Toolbar>
+        <Toolbar className={classes.toolBar}>
           <IconButton
             color="primary"
             edge="start"

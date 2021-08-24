@@ -53,9 +53,9 @@ const Home = () => {
   const classes = useStyles();
   return (
     <>
-      <Helmet title="Dashboard"></Helmet>
+      <Helmet title="App: Dashboard"></Helmet>
       <Container maxWidth="lg">
-        <PageTitle title="Dashboard" link={"/dashboard/home"} />
+        <PageTitle title="Dashboard" link={"/d/home"} />
         <Grid container spacing={4}>
           <Grid item md={8}>
             <Card

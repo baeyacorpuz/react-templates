@@ -50,7 +50,7 @@ const Tag = () => {
       <Container maxWidth="lg">
         <PageTitle
           title="Categories"
-          link={"/dashboard/ecommerce/tag"}
+          link={"/d/ecommerce/tag"}
           page="Tag"
         />
         <Grid container spacing={3}>

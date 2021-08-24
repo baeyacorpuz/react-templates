@@ -51,7 +51,7 @@ const User = () => {
   const [loading, setLoading] = useState(true);
 
   const handleClick = () => {
-    history.push("/dashboard/user");
+    history.push("/d/user");
   };
 
   useEffect(() => {
@@ -72,14 +72,14 @@ const User = () => {
 
   return (
     <>
-      <Helmet title="Users"></Helmet>
+      <Helmet title="Management: Users"></Helmet>
       {loading ? (
         <>
           <SplashScreen />
         </>
       ) : (
         <Container maxWidth="lg">
-          <PageTitle title="Users" page="User" link="/dashboard/user" />
+          <PageTitle title="Users" page="User" link="/d/user" />
           <Grid container spacing={3} className={classes.buttonWrapper}>
             <Grid
               item

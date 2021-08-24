@@ -66,9 +66,9 @@ const UserForm = () => {
 
   return (
     <>
-      <Helmet title="Create Book"></Helmet>
+      <Helmet title="Management: Create User"></Helmet>
       <Container maxWidth="lg">
-        <PageTitle title="Create User" link={"/dashboard/home"} page="User" />
+        <PageTitle title="Create User" link={"/d/home"} page="User" />
         <Grid container className={classes.buttonWrapper} spacing={3}>
           <Grid
             item

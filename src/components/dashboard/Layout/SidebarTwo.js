@@ -1,13 +1,10 @@
+import { Collapse, Divider, Typography } from "@material-ui/core";
 import { Button, Drawer, Hidden, List, makeStyles } from "@material-ui/core";
-import {
-  HomeRounded,
-  LibraryBooksOutlined,
-  PermIdentity,
-  ShoppingCartOutlined,
-} from "@material-ui/icons";
+import { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 import Templated from "../../../assets/images/templated.png";
+import { menuList } from "../../../utils/menuData";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
@@ -21,32 +18,21 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   toolbar: theme.mixins.toolbar,
-  IconWrapper: {
-    height: 22,
-    width: 22,
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    alignContent: "center",
-    margin: "0 25px 0 5px",
-    "& svg": {
-      fontSize: 28,
-      fill: "#435e93",
-    },
+  logo: {
+    width: 70,
   },
-  sideBarListItem: {
+  side: {
+    height: "-webkit-fill-available",
     display: "flex",
-    flexWrap: "wrap",
-    alignContent: "center",
-    alignItems: "center",
-    justifyContent: "flex-start",
-    padding: "16px",
-    marginRight: 24,
-    marginLeft: 24,
-    fontWeight: 500,
-    opacity: 0.65,
-    border: 0,
+    flexDirection: "column",
+    justifyContent: "space-between",
+  },
+  itemWrapper: {
+    width: 230,
+    margin: "0 auto",
+    paddingBottom: 24
+  },
+  link: {
     background: "transparent",
     cursor: "pointer",
     transition: "opacity 0.3s ease",
@@ -64,110 +50,97 @@ const useStyles = makeStyles((theme) => ({
       lineHeight: 1,
       color: "#435e93",
     },
+    textTransform: "uppercase"
   },
-  logoWrapper: {
-    padding: 16,
+  logoutButton: {
+    margin: "0 auto",
+    width: 240,
+    "& .MuiButton-label": {
+      display: "flex",
+      justifyContent: "flex-start"
+    },
+    "& .MuiButton-textPrimary:hover": {
+      backgroundColor: "transparent"
+    }
   },
-  logo: {
-    width: 90,
-  },
-  side: {
-    height: "-webkit-fill-available",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
+  collapsItem: {
+    paddingLeft: 40
+  }
 }));
-
-const navMenu = [
-  {
-    label: "Dashboard",
-    link: "dashboard/home",
-    icon: <HomeRounded />,
-  },
-  {
-    label: "User",
-    link: "dashboard/users",
-    icon: <PermIdentity />,
-    activePath: ["dashboard/users", "dashboard/user"],
-  },
-  {
-    label: "Ecommerce",
-    link: "dashboard/ecommerce/products",
-    icon: <ShoppingCartOutlined />,
-    activePath: [
-      "dashboard/ecommerce/products",
-      "dashboard/ecommerce/create",
-      "dashboard/ecommerce/product",
-      "dashboard/ecommerce/category",
-      "dashboard/ecommerce/tag",
-    ],
-  },
-  {
-    label: "Books",
-    link: "dashboard/books",
-    icon: <LibraryBooksOutlined />,
-    activePath: ["dashboard/books", "dashboard/book"],
-  },
-];
-
-const SidebarMenuItem = (props) => {
-  const classes = useStyles();
-  const { to, activePath, label, icon } = props;
-
-  return (
-    <li>
-      <NavLink
-        exact
-        isActive={
-          activePath &&
-          ((_, { pathname }) =>
-            activePath.some((path) => pathname.includes(path)))
-        }
-        to={`/${to}`}
-        className={classes.sideBarListItem}
-      >
-        <div className={classes.IconWrapper}>{icon}</div>
-        <span>{label}</span>
-      </NavLink>
-    </li>
-  );
-};
 
 const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false)
 
   const handleLogout = async () => {
     localStorage.clear("token")
-    window.location.reload(); 
+    window.location.reload();
+  }
+
+  const handleClick = () => {
+    setOpen(!open)
   }
 
   const drawer = (
     <div className={classes.side}>
       <div>
-        {/* <div className={classes.toolbar} /> */}
         <div className={classes.logoWrapper}>
-          {/* <Typography variant="h2">Templated</Typography> */}
-          <Link to={"/dashboard/home"}>
+          <Link to={"/d/home"}>
             <img className={classes.logo} src={Templated} alt="template logo" />
           </Link>
         </div>
+        <Divider />
         <List>
-          {navMenu.map((navItem) => (
-            <SidebarMenuItem
-              to={navItem.link}
-              key={navItem.link}
-              activePath={navItem.activePath}
-              label={navItem.label}
-              icon={navItem.icon}
-            />
+          {menuList.map((value) => (
+            <div key={value.label} className={classes.itemWrapper}>
+              <Typography variant="overline" color="textSecondary">{value.label}</Typography>
+              {value.items.map((item) => (
+                item.items ? (
+                  <li key={item.key}>
+                    <div className={classes.link} onClick={handleClick}>
+                      <span>{item.label}</span>
+                    </div>
+                    <Collapse in={open} timeout="auto" unmountOnExit>
+                      <List>
+                        {item.items.map((nested) => (
+                          <li key={nested.key} className={classes.collapsItem}>
+                            <NavLink
+                              exact
+                              to={`/d/books/${nested.key}`}
+                              className={classes.link}
+                            >
+                              <span>{nested.label}</span>
+                            </NavLink>
+                          </li>
+                        ))}
+                      </List>
+                    </Collapse>
+                  </li>
+                ) : (
+                  <li key={item.key}>
+                    <NavLink
+                      exact
+                      isActive={
+                        value.activePath &&
+                        ((_, { pathname }) =>
+                          value.activePath.some((path) => pathname.includes(path)))
+                      }
+                      to={`/d/${item.key}`}
+                      className={classes.link}
+                    >
+                      <span>{item.label}</span>
+                    </NavLink>
+                  </li>
+                )
+              ))}
+            </div>
           ))}
         </List>
       </div>
-      <div>
-        <Button fullWidth size="large" color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
+      <div className={classes.logoutButton}>
+        <Button fullWidth color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
       </div>
-    </div>
+    </div >
   );
 
   return (

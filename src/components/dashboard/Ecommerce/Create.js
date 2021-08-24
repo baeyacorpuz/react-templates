@@ -56,7 +56,7 @@ const Create = () => {
       <Container maxWidth="lg">
         <PageTitle
           title="Create Product"
-          link={"/dashboard/home"}
+          link={"/d/home"}
           page="Product"
         />
         <Grid container className={classes.buttonWrapper}>

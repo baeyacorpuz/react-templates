@@ -27,7 +27,7 @@ const Products = () => {
   }, [])
 
   const handleClick = () => {
-    history.push("/dashboard/ecommerce/create");
+    history.push("/d/ecommerce/create");
   };
   return (
     <>
@@ -36,7 +36,7 @@ const Products = () => {
         <PageTitle
           title="Ecommerce"
           page="Products"
-          link="/dashboard/ecommerce/products"
+          link="/d/ecommerce/products"
         />
         <Grid container spacing={3} className={classes.buttonWrapper}>
           <Grid item xs={12} container justifyContent="flex-end" 

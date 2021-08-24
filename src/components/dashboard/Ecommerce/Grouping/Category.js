@@ -55,7 +55,7 @@ const Category = () => {
       <Container maxWidth="lg">
         <PageTitle
           title="Categories"
-          link={"/dashboard/ecommerce/category"}
+          link={"/d/books/category"}
           page="Category"
         />
         <Grid container spacing={3}>

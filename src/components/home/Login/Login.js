@@ -28,7 +28,7 @@ const Login = () => {
     if (data.status) {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user",storageUser)
-      history.go("/dashboard/home");
+      history.go("/d/home");
     } else {
       console.log("false");
     }

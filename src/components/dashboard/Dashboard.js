@@ -29,8 +29,8 @@ const Dashboard = () => {
 
       <div className={classes.contentWrapper}>
         <Switch>
-          <Route path="/dashboard/post" component={Post} />
-          <Route path="/dashboard/pages" component={Page} />
+          <Route path="/d/post" component={Post} />
+          <Route path="/d/pages" component={Page} />
         </Switch>
       </div>
     </>

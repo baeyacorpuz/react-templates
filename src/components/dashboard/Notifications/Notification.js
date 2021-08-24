@@ -14,7 +14,7 @@ const Notification = () => {
     <>
       <Helmet title="Notifications"></Helmet>
       <Container maxWidth="lg">
-        <PageTitle title="Notifications" page="Notifications" link={"/dashboard/notifications"} />
+        <PageTitle title="Notifications" page="Notifications" link={"/d/notifications"} />
         {notifications &&
           notifications.map((notif, index) => (
             <Card variant="outlined" key={index}>

@@ -77,19 +77,19 @@ const Books = () => {
   }, []);
 
   const handleClick = () => {
-    history.push("/dashboard/book");
+    history.push("/d/book");
   };
 
   return (
     <>
-      <Helmet title="Product"></Helmet>
+      <Helmet title="Management: Books"></Helmet>
       {loading ? (
         <>
           <SplashScreen />
         </>
       ) : (
         <Container maxWidth="lg">
-          <PageTitle title="Books" page="Book" link="/dashboard/books" />
+          <PageTitle title="Books" page="Book" link="/d/books" />
           <Grid container spacing={3} className={classes.buttonWrapper}>
             <Grid
               item

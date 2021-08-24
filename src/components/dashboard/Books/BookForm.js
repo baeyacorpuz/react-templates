@@ -110,9 +110,9 @@ const BookForm = () => {
 
   return (
     <>
-      <Helmet title="Create Book"></Helmet>
+      <Helmet title="Management: Create Book"></Helmet>
       <Container maxWidth="lg">
-        <PageTitle title="Create Book" link={"/dashboard/home"} page="Book" />
+        <PageTitle title="Create Book" link={"/d/home"} page="Book" />
         <Grid container className={classes.buttonWrapper}>
           <Grid
             item

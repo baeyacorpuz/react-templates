@@ -26,13 +26,13 @@ const MainRoute = () => {
       <CommonRoute path="/sign-up" component={Home} />
 
       <ProtectedRoute path="/dashboard-2" component={Dashboard} />
-      <ProtectedRoute path="/dashboard" component={DashboardTwo} />
+      <ProtectedRoute path="/d" component={DashboardTwo} />
 
       {isVerified && (
         <>
           <ProtectedRoute path="/profile" component={Dashboard} />
           <ProtectedRoute path="/post" component={Dashboard} />
-          <ProtectedRoute path="/dashboard" component={Dashboard} />
+          <ProtectedRoute path="/d" component={Dashboard} />
         </>
       )}
     </Switch>

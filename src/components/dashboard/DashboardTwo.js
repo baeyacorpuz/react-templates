@@ -53,17 +53,18 @@ const DashboardTwo = () => {
       <div className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          <Route path="/dashboard/home" component={Home} />
-          <Route path="/dashboard/profile" component={Profile} />
-          <Route path="/dashboard/users" component={User} />
-          <Route path="/dashboard/user" component={UserForm} />
-          <Route path="/dashboard/notifications" component={Notification} />
-          <Route path="/dashboard/book" component={BookForm} />
-          <Route path="/dashboard/books" component={Books} />
-          <Route path="/dashboard/ecommerce/products" component={Products} />
-          <Route path="/dashboard/ecommerce/create" component={Create} />
-          <Route path="/dashboard/ecommerce/category" component={Category} />
-          <Route path="/dashboard/ecommerce/tag" component={Tag} />
+          <Route path="/d/home" component={Home} />
+          <Route path="/d/profile" component={Profile} />
+          <Route path="/d/users" component={User} />
+          <Route path="/d/user" component={UserForm} />
+          <Route path="/d/notifications" component={Notification} />
+          <Route path="/d/book" component={BookForm} />
+          <Route path="/d/books/list" component={Books} />
+          <Route path="/d/books/category" component={Category} />
+          <Route path="/d/books/author" component={Category} />
+          <Route path="/d/ecommerce/products" component={Products} />
+          <Route path="/d/ecommerce/create" component={Create} />
+          <Route path="/d/ecommerce/tag" component={Tag} />
         </Switch>
       </div>
     </>

@@ -52,7 +52,6 @@ const MultiAutocomplete = (props) => {
           return option.title;
         }}
         renderOption={(option) => option.title}
-        style={{ width: 300 }}
         freeSolo
         renderInput={(params) => (
           <TextField name={name} {...params} label={label} variant="outlined" />
