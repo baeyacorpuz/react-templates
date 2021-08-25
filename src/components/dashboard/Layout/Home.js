@@ -2,7 +2,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardMedia,
   Container,
   Grid,
   makeStyles,
@@ -11,7 +10,7 @@ import {
 } from "@material-ui/core";
 import Helmet from "react-helmet";
 import PageTitle from "../../common/PageTitle";
-import Reminder from "../../../assets/images/svg/reminder.svg"
+import Reminder from "../../../assets/images/svg/search.svg"
 import clsx from "clsx";
 
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     flex: "1 0 auto",
   },
   cover: {
-    width: "100%",
+    width: "50%",
   },
   controls: {
     display: 'flex',
@@ -60,7 +59,6 @@ const Home = () => {
           <Grid item md={8}>
             <Card
               variant="outlined"
-              // className={[classes.paperWrapper, classes.highlight, classes.root]}
               className={clsx(classes.paperWrapper, classes.highlight, classes.root)}
             >
               <div className={classes.details}>
@@ -78,10 +76,11 @@ const Home = () => {
                   <Button className={classes.controls} variant="contained" color="primary">Products</Button>
                 </CardContent>
               </div>
-              <CardMedia
+              <img src={Reminder} alt="cover" className={classes.cover} />
+              {/* <CardMedia
                 className={classes.cover}
                 image={Reminder}
-              />
+              /> */}
             </Card>
           </Grid>
           <Grid item md={4}>

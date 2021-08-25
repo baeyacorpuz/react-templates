@@ -1,7 +1,7 @@
-import { Button, Divider, Typography } from "@material-ui/core";
+import { Divider, Typography } from "@material-ui/core";
 import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
 import { Fragment } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Templated from "../../../assets/images/coral_name.png";
 import { menuList } from "../../../utils/menuData";
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: theme.mixins.toolbar,
   logo: {
     width: 100,
-    margin: "8px 20px 8px 30px"
+    margin: "16px 8px 8px 30px;"
   },
   side: {
     height: "-webkit-fill-available",
@@ -67,6 +67,17 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#F2F2F0",
     }
+  },
+  muiList: {
+    "& .MuiList-padding": {
+      paddingTop: "0px !important"
+    }
+  },
+  logoutButton: {
+    cursor: "pointer",
+    "&:hover": {
+      backgroundColor: "#F2F2F0",
+    }
   }
 }));
 
@@ -80,43 +91,45 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
 
   const drawer = (
     <div className={classes.side}>
-      <div>
+      <div className={classes.muiList}>
         <div className={classes.logoWrapper}>
-          <Link to={"/d/home"}>
+          <a href="/">
             <img className={classes.logo} src={Templated} alt="template logo" />
-          </Link>
+          </a>
         </div>
         <List>
           <Divider />
-          {menuList.map((list) => (
-            <Fragment key={list.key}>
+          {menuList.map((list, index) => (
+            <Fragment key={index}>
               <li key={list.key}>
                 <Typography className={classes.subList} variant="overline">{list.label}</Typography>
-                {list.items.map((item) => (
-                  <Fragment key={item.key}>
-                    <li key={item.key} className={classes.listItem}>
-                      <NavLink
-                        exact
-                        to={`${item.key}`}
-                        isActive={
-                          item.activePath &&
-                          ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path)))
-                        }
-                        className={classes.sideBarListItem}
-                        activeClassName="active"
-                      >
-                        <Typography variant="h6">{item.label}</Typography>
-                      </NavLink>
-                    </li>
-                  </Fragment>
-                ))}
+                <List>
+                  {list.items.map((item, index) => (
+                    <Fragment key={index}>
+                      <li key={item.key} className={classes.listItem}>
+                        <NavLink
+                          exact
+                          to={`${item.key}`}
+                          isActive={
+                            item.activePath &&
+                            ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path)))
+                          }
+                          className={classes.sideBarListItem}
+                          activeClassName="active"
+                        >
+                          <Typography variant="h6">{item.label}</Typography>
+                        </NavLink>
+                      </li>
+                    </Fragment>
+                  ))}
+                </List>
               </li>
             </Fragment>
           ))}
         </List>
       </div>
-      <div>
-        <Button fullWidth color="primary" onClick={() => handleLogout()} variant="text">Logout</Button>
+      <div className={classes.logoutButton}>
+        <Typography onClick={handleLogout} variant="overline" variantMapping={{ h6: "h6" }} color="primary" className={classes.subList}>Logout</Typography>
       </div>
     </div >
   );

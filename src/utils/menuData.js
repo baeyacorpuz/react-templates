@@ -17,7 +17,7 @@ export const menuList = [
           { label: "Category", key: "category" },
           { label: "Authors", key: "author" },
         ],
-        activePath: ["d/books/list", "d/books/category", "author", "books", "category"]
+        activePath: ["d/books/list", "d/books/category", "book", "books", "category"]
       },
       { label: "Users", key: "users", },
       { label: "Articles", key: "articles" }
