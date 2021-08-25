@@ -29,34 +29,47 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const columns = [
-  {
-    field: "id",
-    headerName: "ID",
-    width: 150,
-  },
-  {
-    field: "bookTitle",
-    headerName: "Book Title",
-    width: 300,
-  },
-  {
-    field: "author",
-    headerName: "Author/s",
-    width: "350",
-  },
-  {
-    field: "genre",
-    headerName: "Genre/s",
-    width: 300,
-  },
-];
-
 const Books = () => {
   const classes = useStyles();
   const history = useHistory();
   const [loading, setLoading] = useState(true);
   const [books, setBooks] = useState([]);
+
+  const columns = [
+    {
+      field: "id",
+      headerName: "ID",
+      width: 150,
+    },
+    {
+      field: "bookTitle",
+      headerName: "Book Title",
+      width: 300,
+    },
+    {
+      field: "author",
+      headerName: "Author/s",
+      width: 200,
+    },
+    {
+      field: "genre",
+      headerName: "Genre/s",
+      width: 200,
+    },
+    {
+      field: "",
+      headerName: "Action",
+      disableClickEventBubbling: true,
+      width: 200,
+      renderCell: (params) => {
+        const onClick = () => {
+          history.push(`/d/book-detail/${params.id}`)
+        };
+  
+        return <Button variant="outlined" size="small" color="secondary" onClick={onClick}>View</Button>;
+      }
+    }
+  ];
 
   useEffect(() => {
     window.scrollTo(0, 0);

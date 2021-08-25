@@ -18,6 +18,7 @@ import { useEffect, useState } from "react";
 import FeaturedDropzone from "../../common/FeaturedDropzone";
 import { createBook, getAuthors, getCategories } from "../../../api/books";
 import MultiAutocomplete from "../../common/MultiAutocomplete";
+import Quill from "../../common/Quill";
 
 const useStyles = makeStyles((theme) => ({
   cardWrapper: {
@@ -53,6 +54,7 @@ const initialValues = {
 
 const BookForm = () => {
   const [rating, setRating] = useState(0);
+  const [state, setState] = useState("");
   const [file, setFile] = useState([]);
   const categories = [];
   const tags = [];
@@ -101,7 +103,8 @@ const BookForm = () => {
       category: input,
       tag: inputTag,
       author: inputAuthor,
-      genre: inputGenre
+      genre: inputGenre,
+      description: state
     };
     console.log(submit);
     createBook(submit);
@@ -150,6 +153,20 @@ const BookForm = () => {
                       </Grid>
 
                       <Grid item xs={12}>
+                        <Quill name="quilldescription" setState={setState} state={state} />
+                        {/* <TextField 
+                          name="description"
+                          variant="outlined"
+                          fullWidth
+                          InputProps={{
+                            inputProps: (
+                              <Quill name="description" setState={setState} state={state} />
+                            )
+                          }}
+                        /> */}
+                      </Grid>
+
+                      {/* <Grid item xs={12}>
                         <TextField
                           fullWidth
                           multiline
@@ -159,7 +176,7 @@ const BookForm = () => {
                           name="description"
                           label="Book Description"
                         />
-                      </Grid>
+                      </Grid> */}
 
                       <Grid item xs={12}>
                         <TextField

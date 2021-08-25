@@ -75,6 +75,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logoutButton: {
     cursor: "pointer",
+    padding: "12px 0px",
     "&:hover": {
       backgroundColor: "#F2F2F0",
     }
@@ -109,7 +110,7 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
                       <li key={item.key} className={classes.listItem}>
                         <NavLink
                           exact
-                          to={`${item.key}`}
+                          to={`/d/${item.key}`}
                           isActive={
                             item.activePath &&
                             ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path)))

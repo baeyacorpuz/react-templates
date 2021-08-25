@@ -1,4 +1,5 @@
 import axios from "axios";
+import buildUrl from 'build-url';
 import { BASE_URL, token } from "../utils/variables";
 
 const headers = {
@@ -49,5 +50,21 @@ export const getAuthors = async () => {
       console.log(err.message);
     });
 
+  return apiResponse
+}
+
+export const getBookDetails = async (params) => {
+  const paramsQuery = buildUrl('', {
+    queryParams: {
+      _id: params
+    }
+  });
+  console.log(paramsQuery)
+  const apiResponse = await axios
+    .get(`${BASE_URL}/v1/book${paramsQuery}`, headers)
+    .then((response) => response.data.book)
+    .catch((err) =>{
+      console.log(err.message);
+    })
   return apiResponse
 }

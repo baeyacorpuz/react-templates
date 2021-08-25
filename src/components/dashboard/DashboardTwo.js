@@ -15,6 +15,7 @@ import BookForm from "./Books/BookForm";
 import Books from "./Books/Books";
 import User from "./User/User";
 import UserForm from "./User/UserForm";
+import BookDetails from "./Books/BookDetails";
 
 const drawerWidth = 280;
 
@@ -65,6 +66,7 @@ const DashboardTwo = () => {
             <Route path="/d/user" component={UserForm} />
             <Route path="/d/notifications" component={Notification} />
             <Route path="/d/book" component={BookForm} />
+            <Route path="/d/book-detail/:id" component={BookDetails} />
             <Route path="/d/books" component={Books} />
             <Route path="/d/books/category" component={Category} />
             <Route path="/d/books/author" component={Category} />
