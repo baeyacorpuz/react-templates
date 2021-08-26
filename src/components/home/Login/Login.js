@@ -27,7 +27,7 @@ const Login = () => {
     const storageUser = JSON.stringify(data.user)
     if (data.status) {
       localStorage.setItem("token", data.token);
-      localStorage.setItem("user",storageUser)
+      localStorage.setItem("user", storageUser)
       history.go("/d/home");
     } else {
       console.log("false");

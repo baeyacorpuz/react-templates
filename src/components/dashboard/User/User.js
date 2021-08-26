@@ -62,7 +62,6 @@ const User = () => {
         const { row_id, ...rest } = row;
         return { id: row._id, ...rest };
       });
-      console.log(rows);
       await setUsers(rows);
       setLoading(false);
     };

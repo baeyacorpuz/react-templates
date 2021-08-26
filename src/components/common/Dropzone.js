@@ -70,7 +70,6 @@ const DropZone = ({ files, setFiles, multiple }) => {
         })
       )
     );
-    console.log(files);
     console.log("here");
   };
 

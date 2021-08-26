@@ -106,7 +106,6 @@ const BookForm = () => {
       genre: inputGenre,
       description: state
     };
-    console.log(submit);
     createBook(submit);
     history.goBack();
   };

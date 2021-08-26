@@ -39,12 +39,12 @@ const Books = () => {
     {
       field: "id",
       headerName: "ID",
-      width: 150,
+      width: 100,
     },
     {
       field: "bookTitle",
       headerName: "Book Title",
-      width: 300,
+      width: 250,
     },
     {
       field: "author",

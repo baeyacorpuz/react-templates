@@ -11,8 +11,8 @@ const useStyles = makeStyles({
       fontFamily: "Inter"
     },
     "& .ql-container.ql-snow": {
-      minHeight: 150,
-      borderRadius: "0px 0px 4px 4px"
+      borderRadius: "0px 0px 4px 4px",
+      minHeight: 150
     },
     "& .ql-toolbar.ql-snow": {
       borderRaiud: "4px 4px 0px 0px"
@@ -24,7 +24,6 @@ const Quill = (props) => {
   const { name, setState, state } = props
   const classes = useStyles()
   const handleChange = (value) => {
-    console.log(value)
     setState(value)
   }
   return (

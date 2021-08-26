@@ -1,10 +1,10 @@
 import { Divider, Typography } from "@material-ui/core";
-import { Drawer, Hidden, List, makeStyles } from "@material-ui/core";
-import { Fragment } from "react";
+import { Drawer, Hidden, List, ListItem, Collapse, makeStyles } from "@material-ui/core";
+import { Fragment, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import Templated from "../../../assets/images/coral_name.png";
-import { menuList } from "../../../utils/menuData";
+import { menuList, mockData } from "../../../utils/menuData";
 
 const drawerWidth = 280;
 const useStyles = makeStyles((theme) => ({
@@ -79,16 +79,35 @@ const useStyles = makeStyles((theme) => ({
     "&:hover": {
       backgroundColor: "#F2F2F0",
     }
-  }
+  },
+  parentList: {
+    paddingLeft: 24,
+  },
+  childList: {
+    paddingLeft: 30,
+  },
+  parentActive: {
+    "&.MuiListItem-root.active": {
+      backgroundColor: "beige",
+      color: "coral",
+      borderRight: "3px solid coral"
+    }
+  },
 }));
 
 const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
   const classes = useStyles();
+  const [open, setOpen] = useState(false)
 
   const handleLogout = async () => {
     localStorage.clear("token")
     window.location.reload();
   }
+
+  const handleClick = () => {
+    setOpen(!open)
+  }
+  console.log(window.location.pathname)
 
   const drawer = (
     <div className={classes.side}>
@@ -122,6 +141,66 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
                         </NavLink>
                       </li>
                     </Fragment>
+                  ))}
+                </List>
+              </li>
+            </Fragment>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {mockData.map((list, index) => (
+            <Fragment key={index}>
+              <li>
+                <Typography className={classes.subList} variant="overline">{list.label}</Typography>
+                <List>
+                  {list.items.map((item, index) => (
+                    <>
+                      {item.items ? (
+                        <>
+                          <ListItem button onClick={handleClick} className={window.location.pathname.includes(`/d/${item.key}/`) ? classes.parentActive + " active" : null}>
+                            <Typography className={classes.parentList} variant="overline">{item.label}</Typography>
+                          </ListItem>
+                          {item.items.map((nested, index) => (
+                            <Fragment key={index}>
+                              <Collapse in={open}>
+                                <li className={classes.childList}>
+                                  <NavLink
+                                    exact
+                                    to={`/d/${item.key}/${nested.key}`}
+                                    isActive={
+                                      item.activePath &&
+                                      ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path), console.log(pathname)))
+                                    }
+                                    className={classes.sideBarListItem}
+                                    activeClassName="active"
+                                  >
+                                    <Typography variant="h6">• {nested.label}</Typography>
+                                  </NavLink>
+                                </li>
+                              </Collapse>
+                            </Fragment>
+                          ))}
+                        </>
+                      ) : (
+                        <Fragment key={index}>
+                          <li className={classes.listItem}>
+                            <NavLink
+                              exact
+                              to={`/d/${item.key}`}
+                              isActive={
+                                item.activePath &&
+                                ((_, { pathname }) => item.activePath.some((path) => pathname.includes(path)))
+                              }
+                              className={classes.sideBarListItem}
+                              activeClassName="active"
+                            >
+                              <Typography variant="h6">{item.label}</Typography>
+                            </NavLink>
+                          </li>
+                        </Fragment>
+                      )}
+                    </>
                   ))}
                 </List>
               </li>

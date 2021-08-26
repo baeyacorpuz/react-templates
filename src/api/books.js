@@ -59,7 +59,6 @@ export const getBookDetails = async (params) => {
       _id: params
     }
   });
-  console.log(paramsQuery)
   const apiResponse = await axios
     .get(`${BASE_URL}/v1/book${paramsQuery}`, headers)
     .then((response) => response.data.book)

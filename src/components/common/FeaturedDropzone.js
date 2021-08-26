@@ -30,7 +30,6 @@ const FeaturedDropzone = ({ file, setFile }) => {
         })
       )
     );
-    console.log(file);
     console.log("here");
   };
 

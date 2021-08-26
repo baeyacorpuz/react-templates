@@ -34,7 +34,6 @@ const SignUp = () => {
   const [inputValue, setInputValue] = useState('')
 
   const onSubmit = async (values) => {
-    console.log(values)
     const submit = {
       ...values,
     };
