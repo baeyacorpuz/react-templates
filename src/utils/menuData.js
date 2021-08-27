@@ -8,42 +8,71 @@ export const menuList = [
       "d/home"
     ]
   },
-  {
-    label: "Management",
-    items: [
-      {
-        label: "Books",
-        key: "books",
-        items: [
-          { label: "Book List", key: "books" },
-          { label: "Category", key: "category" },
-          { label: "Authors", key: "author" },
-        ],
-        activePath: ["d/books/list", "d/books/category", "/book", "books", "category"]
-      },
-      { label: "Users", key: "users", },
-      { label: "Articles", key: "articles" }
-    ],
-    activePath: [
-      "d/books"
-    ]
-  },
+  // {
+  //   label: "Management",
+  //   items: [
+      // {
+      //   label: "Books",
+      //   key: "books",
+      //   items: [
+      //     { label: "Book List", key: "books" },
+      //     { label: "Category", key: "category" },
+      //     { label: "Authors", key: "author" },
+      //   ],
+      //   activePath: ["d/books/list", "d/books/category", "/book", "books", "category"]
+      // },
+    //   { label: "Users", key: "users", },
+    //   { label: "Articles", key: "articles" }
+    // ],
+  //   activePath: [
+  //     "d/books"
+  //   ]
+  // },
 ]
 
 export const mockData = [
+  // {
+  //   label: "Reservations",
+  //   items: [
+  //     {
+  //       label: "Rooms",
+  //       key: "rooms",
+  //       items: [
+  //         { label: "Create", key: "add", activePath: ["create"] },
+  //         { label: "List", key: "list", activePath: ["list"] }
+  //       ],
+  //     },
+  //     { label: "Reservations", key: "reservation", activePath: ["reservation"] },
+  //     { label: "Customer Reviews", key: "customer-reviews" }
+  //   ]
+  // }, 
   {
-    label: "Reservations",
+    label: "Catalog",
     items: [
       {
-        label: "Rooms",
-        key: "rooms",
+        label: "Holdings",
+        key: "holdings",
         items: [
-          { label: "Create", key: "add", activePath: ["create"] },
-          { label: "List", key: "list", activePath: ["list"] }
-        ],
+          { label: "Create", key: "add" },
+          { label: "List", key: "list" },
+          {
+            label: "Authors",
+            key: "author"
+          },
+          {
+            label: "Category",
+            key: "category"
+          },
+        ]
       },
-      { label: "Reservations", key: "reservation", activePath: ["reservation"] },
-      { label: "Customer Reviews", key: "customer-reviews" }
+      {
+        label: "Borrowed",
+        key: "borrowed"
+      },
+      {
+        label: "Terminologies",
+        key: "terminologies"
+      },
     ]
   }
 ]

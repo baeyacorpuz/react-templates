@@ -1,5 +1,6 @@
-import { Divider, Typography } from "@material-ui/core";
+import { Divider, ListItemIcon, Typography } from "@material-ui/core";
 import { Drawer, Hidden, List, ListItem, Collapse, makeStyles } from "@material-ui/core";
+import { ArrowDropDown, ArrowRight } from "@material-ui/icons";
 import { Fragment, useState } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -90,8 +91,24 @@ const useStyles = makeStyles((theme) => ({
     "&.MuiListItem-root.active": {
       backgroundColor: "beige",
       color: "coral",
-      borderRight: "3px solid coral"
-    }
+      borderRight: "3px solid coral",
+      "&.MuiListItemIcon-root": {
+        minWidth: "30px !important"
+      },
+      "& .MuiListItemIcon-root": {
+        color: "coral"
+      }
+    },
+    "&.MuiListItem-button": {
+      display: "flex",
+      alignContent: "center",
+      justifyContent: "space-between"
+    },
+    "& .MuiListItemIcon-root": {
+      minWidth: "30px !important",
+      marginTop: "-1px",
+    },
+    borderRight: "3px solid transparent",
   },
 }));
 
@@ -158,8 +175,11 @@ const SidebarTwo = ({ mobileOpen, handleDrawerToggle }) => {
                     <>
                       {item.items ? (
                         <>
-                          <ListItem button onClick={handleClick} className={window.location.pathname.includes(`/d/${item.key}/`) ? classes.parentActive + " active" : null}>
+                          <ListItem button onClick={handleClick} className={window.location.pathname.includes(`/d/${item.key}/`) ? classes.parentActive + " active" : classes.parentActive + " null"}>
                             <Typography className={classes.parentList} variant="overline">{item.label}</Typography>
+                            <ListItemIcon>
+                              {open ? <ArrowDropDown /> : <ArrowRight />}
+                            </ListItemIcon>
                           </ListItem>
                           {item.items.map((nested, index) => (
                             <Fragment key={index}>

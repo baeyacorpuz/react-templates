@@ -67,3 +67,13 @@ export const getBookDetails = async (params) => {
     })
   return apiResponse
 }
+
+export const getTerminologies = async () => {
+  const apiResponse = await axios
+    .get(`${BASE_URL}/v1/terminology`, headers)
+    .then((response) => response.data.terminology)
+    .catch((err) =>{
+      console.log(err.message);
+    })
+  return apiResponse
+}

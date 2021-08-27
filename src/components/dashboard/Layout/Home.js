@@ -12,6 +12,7 @@ import Helmet from "react-helmet";
 import PageTitle from "../../common/PageTitle";
 import Reminder from "../../../assets/images/svg/search.svg"
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paperWrapper: {
@@ -73,7 +74,9 @@ const Home = () => {
                     If you are going to use a passage of Lorem Ipsum, you need
                     to be sure there isn't anything
                   </Typography>
-                  <Button className={classes.controls} variant="contained" color="primary">Products</Button>
+                  <Link to={`/d/holdings/list`}>
+                    <Button className={classes.controls} variant="contained" color="primary">Holdings</Button>
+                  </Link>
                 </CardContent>
               </div>
               <img src={Reminder} alt="cover" className={classes.cover} />
